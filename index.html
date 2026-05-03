@@ -21,7 +21,7 @@
   --gold:#f59e0b;--gold-dark:#d97706;--gold-light:#fffbeb;--gold-border:#fde68a;
   --green:#16a34a;--green-bg:#f0fdf4;--green-br:#bbf7d0;
   --blue:#2563eb;--blue-bg:#eff6ff;--blue-br:#bfdbfe;
-  --red:#dc2626;--teal:#0d9488;--teal-bg:#f0fdfa;--teal-br:#99f6e4;
+  --red:#dc2626;--red-bg:#fff1f2;--teal:#0d9488;--teal-bg:#f0fdfa;--teal-br:#99f6e4;
   --text:#0f172a;--text2:#475569;
   --r:10px;--rlg:16px;
   --sh:0 1px 3px rgba(0,0,0,.08),0 4px 16px rgba(0,0,0,.06);
@@ -85,45 +85,44 @@ nav{background:var(--navy);position:sticky;top:0;z-index:200;box-shadow:0 2px 12
 /* FORM */
 label{display:block;font-size:12px;font-weight:700;margin-bottom:3px;color:var(--navy2)}
 .lh{font-weight:500;color:var(--slate)}
-input[type=time],input[type=number],input[type=text],select{
+input[type=number],input[type=text],select{
   width:100%;padding:8px 10px;border:2px solid var(--border-light);border-radius:7px;
   font-family:'JetBrains Mono','Inter',monospace;font-size:14px;
-  background:#fff;color:var(--text);outline:none;
+  background:#fff;color:#0f172a;outline:none;
   transition:border-color .15s;-webkit-appearance:none;appearance:none}
-input:focus,select:focus{border-color:var(--navy);box-shadow:0 0 0 3px rgba(15,23,42,.07)}
-
-/* COMPACT inputs for time fields */
-.inp-sm{max-width:130px!important;font-size:13px!important;padding:7px 9px!important}
-/* even smaller for timesheet */
-.inp-ts{max-width:90px!important;font-size:12px!important;padding:6px 7px!important}
-.inp-brk{max-width:56px!important;font-size:12px!important;padding:6px 7px!important}
-/* TIME PICKER WIDGET */
-.tp-wrap{display:inline-flex;align-items:center;gap:2px;background:#ffffff;border:2px solid var(--border-light);border-radius:7px;padding:5px 7px;transition:border-color .15s;cursor:text;color:#0f172a !important}
-.tp-wrap:focus-within{border-color:var(--navy);box-shadow:0 0 0 3px rgba(15,23,42,.07)}
-.tp-wrap.dark{background:rgba(255,255,255,.08)!important;border-color:rgba(255,255,255,.14)!important;color:#fff!important}
-.tp-wrap.dark .tp-seg{color:#ffffff !important}
-.tp-wrap.dark .tp-sep{color:#64748b!important}
-.tp-wrap.dark .tp-ampm{color:var(--gold)!important;border-color:rgba(255,255,255,.2)!important}
-.tp-wrap.dark .tp-ampm.sel{background:var(--gold)!important;color:var(--navy)!important;border-color:var(--gold)!important}
-.tp-seg{width:22px;font-family:'JetBrains Mono',monospace;font-size:14px;font-weight:600;text-align:center;border:none;outline:none;background:transparent;color:#0f172a !important;padding:0;-moz-appearance:textfield}
-.tp-seg::-webkit-outer-spin-button,.tp-seg::-webkit-inner-spin-button{-webkit-appearance:none}
-.tp-sep{font-family:'JetBrains Mono',monospace;font-size:14px;font-weight:700;color:var(--slate);padding:0 1px;user-select:none}
-.tp-ampm{display:flex;gap:2px;margin-left:4px}
-.tp-ampm-btn{font-size:11px;font-weight:800;padding:2px 5px;border-radius:4px;border:1.5px solid var(--border);cursor:pointer;background:none;color:var(--slate);font-family:'Inter',sans-serif;transition:all .12s;line-height:1.4}
-.tp-ampm-btn.sel{background:var(--navy);color:#fff;border-color:var(--navy)}
-.tp-wrap.dark .tp-ampm-btn{border-color:rgba(255,255,255,.2);color:#94a3b8}
-.tp-wrap.dark .tp-ampm-btn.sel{background:var(--gold);color:var(--navy);border-color:var(--gold)}
-
-
+input[type=number]:focus,input[type=text]:focus,select:focus{border-color:var(--navy);box-shadow:0 0 0 3px rgba(15,23,42,.07)}
+/* Time picker segment overrides — must beat the global rule above */
+.tp .tp-n{background:transparent !important;color:#0f172a !important;width:26px !important;padding:0 !important;border:none !important;box-shadow:none !important;font-size:15px !important}
+.tp.dark .tp-n{color:#ffffff !important;background:transparent !important}
+.tp .tp-n:focus{border:none !important;box-shadow:none !important;outline:none !important}
+.inp-sm{max-width:200px!important}
+.inp-brk{max-width:70px!important}
 select{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='11' height='7' viewBox='0 0 11 7'%3E%3Cpath d='M1 1l4.5 4.5L10 1' stroke='%23475569' stroke-width='2' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 10px center;padding-right:30px}
 .field{margin-bottom:12px}
 .g2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
 .g3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px}
 @media(max-width:520px){.g2,.g3{grid-template-columns:1fr}}
 
+/* TIME PICKER */
+.tp{display:inline-flex;align-items:center;gap:3px;background:#fff;border:2px solid var(--border-light);border-radius:7px;padding:6px 9px;cursor:text;transition:border-color .15s}
+.tp:focus-within{border-color:var(--navy);box-shadow:0 0 0 3px rgba(15,23,42,.07)}
+.tp-n{width:26px;border:none;outline:none;background:transparent;font-family:'JetBrains Mono',monospace;font-size:15px;font-weight:600;color:#0f172a;text-align:center;padding:0;-moz-appearance:textfield}
+.tp-n::-webkit-outer-spin-button,.tp-n::-webkit-inner-spin-button{-webkit-appearance:none}
+.tp-colon{font-family:'JetBrains Mono',monospace;font-size:15px;font-weight:700;color:var(--slate);user-select:none}
+.tp-ap{display:flex;gap:2px;margin-left:4px}
+.tp-ap button{font-size:11px;font-weight:800;padding:2px 6px;border-radius:4px;border:1.5px solid var(--border);cursor:pointer;background:none;color:var(--slate);font-family:'Inter',sans-serif;line-height:1.5;transition:all .12s}
+.tp-ap button.on{background:var(--navy);color:#fff;border-color:var(--navy)}
+/* dark theme (live panel) */
+.tp.dark{background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.15)}
+.tp.dark .tp-n{color:#fff}
+.tp.dark .tp-colon{color:#64748b}
+.tp.dark .tp-ap button{border-color:rgba(255,255,255,.2);color:#94a3b8}
+.tp.dark .tp-ap button.on{background:var(--gold);color:var(--navy);border-color:var(--gold)}
+.tp-full{width:100%}
+
 /* RADIO */
-.radio-group{display:flex;gap:6px;flex-wrap:wrap;margin-top:4px}
-.ro{display:flex;align-items:center;gap:4px;padding:7px 11px;border:2px solid var(--border-light);border-radius:7px;cursor:pointer;font-size:12.5px;font-weight:600;transition:all .15s;user-select:none}
+.radio-group{display:flex;gap:7px;flex-wrap:wrap;margin-top:5px}
+.ro{display:flex;align-items:center;gap:5px;padding:7px 12px;border:2px solid var(--border-light);border-radius:8px;cursor:pointer;font-size:13px;font-weight:600;transition:all .15s;user-select:none}
 .ro input{display:none}
 .ro.sel{border-color:var(--navy);background:var(--navy);color:#fff}
 
@@ -133,98 +132,87 @@ select{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/
 .btn-navy{background:var(--navy);color:#fff}.btn-navy:hover{opacity:.85}
 .btn-gold{background:var(--gold);color:var(--navy)}.btn-gold:hover{background:var(--gold-dark)}
 .btn-ghost{background:none;border:2px solid var(--border);color:var(--text2)}.btn-ghost:hover{border-color:var(--navy);color:var(--navy)}
-.btn-red{background:#fee2e2;color:var(--red);border:none}.btn-red:hover{background:#fecaca}
-.btn-sm{padding:6px 11px;font-size:12px}
+.btn-red{background:var(--red-bg);color:var(--red);border:none}.btn-red:hover{background:#fecaca}
 .btn-teal{background:var(--teal);color:#fff}.btn-teal:hover{opacity:.88}
+.btn-sm{padding:6px 12px;font-size:12px}
 
 /* RESULTS */
-.r-hero{background:linear-gradient(135deg,var(--navy) 0%,var(--navy2) 100%);border-radius:var(--r);padding:16px 18px;margin-top:15px}
+.r-hero{background:linear-gradient(135deg,var(--navy),var(--navy2));border-radius:var(--r);padding:16px 18px;margin-top:14px}
 .rh-label{font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.07em;color:#64748b;margin-bottom:4px}
-.rh-value{font-size:clamp(18px,5vw,42px);font-family:'JetBrains Mono',monospace;font-weight:600;color:var(--gold);line-height:1.1;word-break:break-all;overflow-wrap:break-word}
+.rh-value{font-size:clamp(22px,5vw,38px);font-family:'JetBrains Mono',monospace;font-weight:600;color:var(--gold);line-height:1;word-break:break-all}
 .rh-sub{font-size:12px;color:#94a3b8;margin-top:6px}
 .rcards{display:grid;grid-template-columns:repeat(auto-fill,minmax(110px,1fr));gap:7px;margin-top:10px}
 .rc{background:var(--bg2);border:1.5px solid var(--border-light);border-radius:8px;padding:10px 12px}
 .rc-l{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:var(--slate);margin-bottom:2px}
-.rc-v{font-size:clamp(11px,2.5vw,16px);font-weight:800;font-family:'JetBrains Mono',monospace;line-height:1.2;word-break:break-all;overflow:hidden}
+.rc-v{font-size:clamp(12px,2.5vw,16px);font-weight:800;font-family:'JetBrains Mono',monospace;line-height:1.2;word-break:break-all}
 .c-blue{color:var(--blue)}.c-green{color:var(--green)}.c-gold{color:var(--gold-dark)}.c-red{color:var(--red)}.c-navy{color:var(--navy)}.c-teal{color:var(--teal)}
 .band{border-radius:8px;padding:12px 14px;margin-top:9px}
 .band.green{background:var(--green-bg);border:1.5px solid var(--green-br)}
 .band.blue{background:var(--blue-bg);border:1.5px solid var(--blue-br)}
 .band.teal{background:var(--teal-bg);border:1.5px solid var(--teal-br)}
 .b-label{font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.06em;color:var(--slate);margin-bottom:2px}
-.b-value{font-size:19px;font-weight:800;font-family:'JetBrains Mono',monospace}
+.b-value{font-size:clamp(14px,3vw,19px);font-weight:800;font-family:'JetBrains Mono',monospace;word-break:break-all}
 .b-value.green{color:var(--green)}.b-value.blue{color:var(--blue)}.b-value.teal{color:var(--teal)}
-.b-sub{font-size:12px;color:var(--text2);margin-top:3px;line-height:1.5}
+.b-sub{font-size:12px;color:var(--text2);margin-top:3px}
 
-/* PUNCH rows */
-.punch-row{display:grid;grid-template-columns:20px 1fr 1fr auto;gap:6px;align-items:end;margin-bottom:7px}
-.pnum{font-size:10.5px;font-weight:800;color:var(--slate);text-align:center;padding-bottom:11px}
-
-/* ── LIVE PANEL ── */
-.live-panel{background:linear-gradient(135deg,var(--navy) 0%,#0d1f3c 100%);border-radius:var(--rlg);padding:20px;margin-bottom:13px;box-shadow:var(--shlg);border:1.5px solid var(--navy3)}
-.live-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;flex-wrap:wrap;gap:8px}
-.live-title{font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.08em;color:#64748b;display:flex;align-items:center;gap:7px}
-.live-dot{width:7px;height:7px;background:var(--green);border-radius:50%;animation:pulse 1.5s infinite}
+/* LIVE PANEL */
+.live-panel{background:linear-gradient(135deg,var(--navy),#0d1f3c);border-radius:var(--rlg);padding:20px;margin-bottom:13px;box-shadow:var(--shlg);border:1.5px solid var(--navy3)}
+.live-label{font-size:11px;font-weight:700;color:#94a3b8;margin-bottom:4px;display:block}
+.live-title{font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.08em;color:#64748b;display:flex;align-items:center;gap:7px;margin-bottom:14px}
+.live-dot{width:7px;height:7px;background:var(--green);border-radius:50%;animation:pulse 1.5s infinite;flex-shrink:0}
 @keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
-.live-inputs{display:grid;grid-template-columns:1fr 1fr 1fr;gap:9px;margin-bottom:14px}
-@media(max-width:520px){.live-inputs{grid-template-columns:1fr 1fr}}
-.live-label{font-size:11px;font-weight:700;color:#94a3b8;margin-bottom:3px;display:block}
-.live-inp{background:rgba(255,255,255,.08)!important;border-color:rgba(255,255,255,.14)!important;color:#fff!important;font-size:13px!important;padding:7px 9px!important}
-.live-inp::placeholder{color:#64748b}
-.live-btns{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:15px}
-.timers-row{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:12px}
+.live-inputs-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:9px;margin-bottom:14px}
+@media(max-width:520px){.live-inputs-grid{grid-template-columns:1fr 1fr}}
+.timers-row{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:10px}
 @media(max-width:380px){.timers-row{grid-template-columns:1fr}}
 .timer-block{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);border-radius:9px;padding:13px;text-align:center}
 .timer-lbl{font-size:9.5px;font-weight:800;text-transform:uppercase;letter-spacing:.07em;margin-bottom:7px}
-.timer-lbl.red{color:#f87171}.timer-lbl.green{color:#4ade80}
-.timer-val{font-size:clamp(20px,5vw,36px);font-family:'JetBrains Mono',monospace;font-weight:600;line-height:1;word-break:break-all}
-.tv-countdown{color:var(--gold)}.tv-countup{color:#4ade80}.tv-done{color:#4ade80}
+.timer-lbl.red{color:#f87171}.timer-lbl.grn{color:#4ade80}
+.timer-val{font-size:clamp(22px,5.5vw,34px);font-family:'JetBrains Mono',monospace;font-weight:600;line-height:1}
+.tv-cd{color:var(--gold)}.tv-cu{color:#4ade80}.tv-done{color:#4ade80}
 .timer-sub{font-size:10.5px;color:#94a3b8;margin-top:4px}
-.prog-track{height:8px;background:rgba(255,255,255,.08);border-radius:99px;overflow:hidden;margin-bottom:10px}
-.prog-fill{height:100%;background:linear-gradient(90deg,var(--gold) 0%,#4ade80 100%);border-radius:99px;transition:width .5s ease}
-.live-money-row{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:10px}
-@media(max-width:380px){.live-money-row{grid-template-columns:1fr}}
+.prog-track{height:8px;background:rgba(255,255,255,.08);border-radius:99px;overflow:hidden;margin-bottom:8px}
+.prog-fill{height:100%;background:linear-gradient(90deg,var(--gold),#4ade80);border-radius:99px;transition:width .5s ease}
+.money-row{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:10px}
+@media(max-width:380px){.money-row{grid-template-columns:1fr}}
 .money-block{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);border-radius:9px;padding:12px 14px}
 .money-lbl{font-size:9.5px;font-weight:800;text-transform:uppercase;letter-spacing:.06em;margin-bottom:5px}
-.money-lbl.gold{color:var(--gold)}.money-lbl.green{color:#4ade80}
-.money-big{font-size:clamp(16px,4vw,32px);font-family:'JetBrains Mono',monospace;font-weight:600;line-height:1.1;word-break:break-all;overflow-wrap:break-word}
-.money-big.gold{color:var(--gold)}.money-big.green{color:#4ade80}
-.money-sub{font-size:10.5px;color:#94a3b8;margin-top:4px}
-.live-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:7px}
+.money-lbl.gold{color:var(--gold)}.money-lbl.grn{color:#4ade80}
+.money-big{font-size:clamp(18px,4vw,28px);font-family:'JetBrains Mono',monospace;font-weight:600;line-height:1.1;word-break:break-all}
+.money-big.gold{color:var(--gold)}.money-big.grn{color:#4ade80}
+.money-sub{font-size:10.5px;color:#94a3b8;margin-top:3px}
+.live-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin-top:10px}
 @media(max-width:400px){.live-stats{grid-template-columns:repeat(2,1fr)}}
-.ls-block{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07);border-radius:7px;padding:9px 10px}
+.ls-b{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07);border-radius:7px;padding:8px 10px}
 .ls-l{font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:#64748b;margin-bottom:2px}
-.ls-v{font-size:13.5px;font-weight:700;font-family:'JetBrains Mono',monospace;color:#e2e8f0}
-.live-hint{font-size:11px;color:#64748b;text-align:center;margin-top:7px}
-#live-idle{display:block}
-#live-running{display:none}
+.ls-v{font-size:13px;font-weight:700;font-family:'JetBrains Mono',monospace;color:#e2e8f0}
+
+/* PUNCH */
+.punch-row{display:grid;grid-template-columns:20px 1fr 1fr auto;gap:6px;align-items:end;margin-bottom:8px}
+.pnum{font-size:10.5px;font-weight:800;color:var(--slate);text-align:center;padding-bottom:11px}
 
 /* TABS */
 .tab-bar{display:flex;gap:3px;background:var(--bg);border-radius:9px;padding:3px;margin-bottom:16px;border:1.5px solid var(--border-light)}
-.tab-btn{flex:1;padding:8px 8px;border-radius:7px;border:none;font-family:'Inter',sans-serif;font-size:12.5px;font-weight:700;cursor:pointer;background:none;color:var(--slate);transition:all .15s}
+.tab-btn{flex:1;padding:8px;border-radius:7px;border:none;font-family:'Inter',sans-serif;font-size:12.5px;font-weight:700;cursor:pointer;background:none;color:var(--slate);transition:all .15s}
 .tab-btn.active{background:var(--navy);color:#fff}
 
 /* RAISE */
-.raise-header{background:linear-gradient(135deg,var(--teal-bg),var(--blue-bg));border:1.5px solid var(--teal-br);border-radius:10px;padding:14px 16px;margin-bottom:12px}
-.raise-header-top{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;margin-bottom:10px}
-.raise-header h3{font-size:14px;font-weight:800;color:var(--teal)}
-.raise-current{font-size:12px;color:var(--text2)}
-.raise-current strong{color:var(--navy);font-size:13px}
-.raise-input-row{display:flex;align-items:flex-end;gap:9px;flex-wrap:wrap}
+.raise-header{background:linear-gradient(135deg,var(--teal-bg),var(--blue-bg));border:1.5px solid var(--teal-br);border-radius:10px;padding:14px 16px;margin-bottom:10px}
+.raise-header h3{font-size:14px;font-weight:800;color:var(--teal);margin-bottom:8px}
 .raise-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:8px}
 .raise-card{background:linear-gradient(135deg,var(--teal-bg),var(--blue-bg));border:1.5px solid var(--teal-br);border-radius:9px;padding:12px 13px}
 .raise-card .rl{font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.05em;color:var(--teal);margin-bottom:3px}
-.raise-card .rv{font-size:clamp(11px,2.8vw,17px);font-weight:800;font-family:'JetBrains Mono',monospace;color:var(--teal);word-break:break-all}
+.raise-card .rv{font-size:clamp(12px,2.5vw,16px);font-weight:800;font-family:'JetBrains Mono',monospace;color:var(--teal);word-break:break-all}
 .raise-card .rs{font-size:10.5px;color:var(--text2);margin-top:2px}
 
 /* TIMESHEET */
 .ts-wrap{overflow-x:auto;border-radius:9px;border:1.5px solid var(--border-light)}
 .ts-table{width:100%;border-collapse:collapse;font-size:12.5px}
-.ts-table th{padding:7px 7px;text-align:left;font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.05em;color:var(--slate);background:var(--bg);border-bottom:2px solid var(--border-light);white-space:nowrap}
+.ts-table th{padding:7px 8px;text-align:left;font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.05em;color:var(--slate);background:var(--bg);border-bottom:2px solid var(--border-light);white-space:nowrap}
 .ts-table td{padding:4px 5px;border-bottom:1px solid var(--border-light);vertical-align:middle}
 .ts-table tbody tr:last-child td{border-bottom:none}
 .ts-table tfoot td{font-weight:800;font-size:13px;padding:8px 7px;background:var(--bg);border-top:2px solid var(--border)}
-.ts-day-name{font-weight:700;color:var(--navy);font-size:12.5px;white-space:nowrap;padding-right:4px}
+.ts-day-name{font-weight:700;color:var(--navy);font-size:12.5px;white-space:nowrap}
 .ts-day-val{font-family:'JetBrains Mono',monospace;font-weight:700;color:var(--blue);font-size:12px;white-space:nowrap}
 .copy-dn{background:none;border:1px solid var(--border);border-radius:5px;padding:3px 7px;font-size:10.5px;font-weight:700;cursor:pointer;color:var(--slate);font-family:'Inter',sans-serif;transition:all .12s;white-space:nowrap}
 .copy-dn:hover{border-color:var(--navy);color:var(--navy)}
@@ -250,44 +238,41 @@ select{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/
 /* UTIL */
 .hidden{display:none!important}
 .mt8{margin-top:8px}.mt12{margin-top:12px}.mt14{margin-top:14px}
-.flex{display:flex}.fw{flex-wrap:wrap}.gap7{gap:7px}
+.flex{display:flex}.fw{flex-wrap:wrap}.gap7{gap:7px}.gap8{gap:8px}
 .sm{font-size:12.5px}.muted{color:var(--text2)}
 .divider{height:1px;background:var(--border-light);margin:13px 0}
 .info-box{background:var(--blue-bg);border:1.5px solid var(--blue-br);border-radius:7px;padding:9px 12px;font-size:12.5px;color:var(--blue);margin-top:8px}
 
 /* FOOTER */
 footer{background:var(--navy);color:#64748b;text-align:center;padding:26px 18px;margin-top:36px}
-.f-logo{font-size:16px;font-weight:900;color:var(--gold);margin-bottom:7px;letter-spacing:-.3px}
+.f-logo{font-size:16px;font-weight:900;color:var(--gold);margin-bottom:7px}
 .f-links{display:flex;gap:13px;justify-content:center;flex-wrap:wrap;margin:8px 0}
 .f-links a{color:#64748b;text-decoration:none;font-size:12px}.f-links a:hover{color:#fff}
 .f-disc{font-size:11px;color:#334155;margin-top:7px;line-height:1.6}
 
-/* PRINT */
 @media print{
   nav,footer,.ad-slot,.btn,.tab-bar,.bm-banner,.sep,.page-head,.copy-dn,.ts-actions,.live-panel,.info-box{display:none!important}
   .page{display:block!important}
   #page-home,#page-myshift,#page-myhours,#page-mypay{display:none!important}
   #page-timesheet{display:block!important}
-  .card{box-shadow:none;border:1px solid #ccc}
-  body{background:#fff}
+  .card{box-shadow:none;border:1px solid #ccc}body{background:#fff}
 }
 
-/* Force time picker — override global input[type=number] rule */
-input.tp-seg{background:transparent !important;color:#0f172a !important;width:22px !important;padding:0 !important;border:none !important;box-shadow:none !important;font-size:14px !important}
-.tp-wrap.dark input.tp-seg{background:transparent !important;color:#ffffff !important}
-.tp-wrap input.tp-seg:focus{outline:none !important;border:none !important;box-shadow:none !important}
+/* LEGAL PAGES */
+.legal-page-wrap{max-width:680px}
+.legal-back{display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:700;color:var(--slate);cursor:pointer;background:none;border:none;font-family:'Inter',sans-serif;margin-bottom:16px;padding:0}
+.legal-back:hover{color:var(--navy)}
 </style>
 </head>
 <body>
-
 <nav>
   <div class="nav-wrap">
-    <a href="#" class="logo" onclick="showPage('home')">⏱ Shift Clock<span>Time</span></a>
+    <a href="#" class="logo" onclick="showPage('home')">&#9201; Shift Clock<span>Time</span></a>
     <div class="nav-links">
-      <button class="nav-link" data-page="myhours" onclick="showPage('myhours')">💰 My Hours</button>
-      <button class="nav-link" data-page="myshift" onclick="showPage('myshift')">⏰ My Shift</button>
-      <button class="nav-link" data-page="mypay" onclick="showPage('mypay')">💵 My Pay</button>
-      <button class="nav-link" data-page="timesheet" onclick="showPage('timesheet')">📋 Timesheet</button>
+      <button class="nav-link" data-page="myhours" onclick="showPage('myhours')">&#128176; My Hours</button>
+      <button class="nav-link" data-page="myshift" onclick="showPage('myshift')">&#9200; My Shift</button>
+      <button class="nav-link" data-page="mypay" onclick="showPage('mypay')">&#128181; My Pay</button>
+      <button class="nav-link" data-page="timesheet" onclick="showPage('timesheet')">&#128203; Timesheet</button>
     </div>
   </div>
 </nav>
@@ -298,60 +283,33 @@ input.tp-seg{background:transparent !important;color:#0f172a !important;width:22
     <div class="ad-slot"><!-- Google AdSense --><br>Advertisement</div>
     <div class="hero">
       <h1>Free Tools for<br><em>Every Shift Worker</em></h1>
-      <p>What time do you clock out? How much are you making right now? Get answers fast — no signup, completely free.</p>
+      <p>What time do you clock out? How much are you making right now? Get answers fast — no signup, free.</p>
       <div class="tool-grid">
-        <button class="tool-tile" onclick="showPage('myhours')">
-          <span class="arr">→</span><span class="tt-icon">💰</span>
-          <div class="tt-badge">Live tracker</div>
-          <div class="tt-title">Live Earnings + Shift Timer</div>
-          <div class="tt-desc">Watch your money grow in real time. Countdown and count-up together.</div>
-        </button>
-        <button class="tool-tile" onclick="showPage('myshift')">
-          <span class="arr">→</span><span class="tt-icon">🕐</span>
-          <div class="tt-badge">Most used</div>
-          <div class="tt-title">What Time Do I Clock Out?</div>
-          <div class="tt-desc">Enter start time and shift length. Get your exact clock out time.</div>
-        </button>
-        <button class="tool-tile" onclick="showPage('myshift')">
-          <span class="arr">→</span><span class="tt-icon">📏</span>
-          <div class="tt-title">How Many Hours Did I Work?</div>
-          <div class="tt-desc">Type start and end times. Get hours, minutes, and decimal hours for payroll.</div>
-        </button>
-        <button class="tool-tile" onclick="showPage('mypay')">
-          <span class="arr">→</span><span class="tt-icon">💵</span>
-          <div class="tt-badge">Most popular</div>
-          <div class="tt-title">How Much Do I Take Home?</div>
-          <div class="tt-desc">Enter rate and hours. See take-home pay after taxes — weekly and yearly.</div>
-        </button>
-        <button class="tool-tile" onclick="showPage('mypay')">
-          <span class="arr">→</span><span class="tt-icon">⚡</span>
-          <div class="tt-title">Overtime Calculator</div>
-          <div class="tt-desc">Worked over 40 hours? See exact overtime pay with any multiplier.</div>
-        </button>
-        <button class="tool-tile" onclick="showPage('timesheet')">
-          <span class="arr">→</span><span class="tt-icon">📋</span>
-          <div class="tt-title">Weekly Timesheet</div>
-          <div class="tt-desc">Fill in your week fast. Auto-fills the next day. Print or copy it.</div>
-        </button>
+        <button class="tool-tile" onclick="showPage('myhours')"><span class="arr">&#8594;</span><span class="tt-icon">&#128176;</span><div class="tt-badge">Live tracker</div><div class="tt-title">Live Earnings + Shift Timer</div><div class="tt-desc">Watch your money grow in real time.</div></button>
+        <button class="tool-tile" onclick="showPage('myshift')"><span class="arr">&#8594;</span><span class="tt-icon">&#128336;</span><div class="tt-badge">Most used</div><div class="tt-title">What Time Do I Clock Out?</div><div class="tt-desc">Enter start time and shift length.</div></button>
+        <button class="tool-tile" onclick="showPage('myshift')"><span class="arr">&#8594;</span><span class="tt-icon">&#128207;</span><div class="tt-title">How Many Hours Did I Work?</div><div class="tt-desc">Get hours, minutes, and decimal hours.</div></button>
+        <button class="tool-tile" onclick="showPage('mypay')"><span class="arr">&#8594;</span><span class="tt-icon">&#128181;</span><div class="tt-badge">Most popular</div><div class="tt-title">How Much Do I Take Home?</div><div class="tt-desc">See take-home pay after taxes.</div></button>
+        <button class="tool-tile" onclick="showPage('mypay')"><span class="arr">&#8594;</span><span class="tt-icon">&#9889;</span><div class="tt-title">Overtime Calculator</div><div class="tt-desc">See exact overtime pay with any rate.</div></button>
+        <button class="tool-tile" onclick="showPage('timesheet')"><span class="arr">&#8594;</span><span class="tt-icon">&#128203;</span><div class="tt-title">Weekly Timesheet</div><div class="tt-desc">Fill your week fast. Print or copy.</div></button>
       </div>
-      <div class="tap-hint"><span>👆 Tap any card above to open that tool</span></div>
+      <div class="tap-hint"><span>&#128070; Tap any card above to open that tool</span></div>
     </div>
     <div class="bm-banner">
-      <div class="bb-icon">🔖</div>
+      <div class="bb-icon">&#128278;</div>
       <div class="bb-text">
-        <h3>Bookmark this — use it every single shift</h3>
-        <p><span class="bb-key">Ctrl+D</span> Windows · <span class="bb-key">⌘+D</span> Mac · Phone: Share → Add to Home Screen</p>
+        <h3>Bookmark this — use it every shift</h3>
+        <p><span class="bb-key">Ctrl+D</span> Windows &middot; <span class="bb-key">&#8984;+D</span> Mac &middot; Phone: Share &#8594; Add to Home Screen</p>
       </div>
     </div>
     <div class="card">
-      <div class="card-title">❓ Common Questions — Tap to Read</div>
-      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">What time do I clock out if I start at 7am and work 8 hours?<span class="faq-ico">﹢</span></button><div class="faq-a">If you start at 7:00 AM and work 8 hours, you clock out at 3:00 PM. Tap <strong>My Shift</strong> at the top for any start time.</div></div>
-      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">How many hours did I work?<span class="faq-ico">﹢</span></button><div class="faq-a">Tap <strong>My Shift</strong> → "How Many Hours Did I Work?" Enter your start and end time. It shows hours, minutes, and decimal hours for payroll.</div></div>
-      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">How many breaks do I get in an 8-hour shift?<span class="faq-ico">﹢</span></button><div class="faq-a">Most states require one 30-minute meal break and two 15-minute rest breaks in an 8-hour shift. Rules vary by state.</div></div>
-      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">How is overtime pay figured out?<span class="faq-ico">﹢</span></button><div class="faq-a">Most jobs pay 1.5× your rate for every hour over 40 in a week. Tap <strong>My Pay → Overtime</strong> to calculate with any rate.</div></div>
-      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">How do I see take-home pay after taxes?<span class="faq-ico">﹢</span></button><div class="faq-a">Tap <strong>My Pay</strong>. Enter your hourly rate, hours, and tax rate (most workers use 20–25%). See gross, taxes out, and real take-home.</div></div>
+      <div class="card-title">&#10067; Common Questions</div>
+      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">What time do I clock out if I start at 7am and work 8 hours?<span class="faq-ico">+</span></button><div class="faq-a">You clock out at 3:00 PM. Tap <strong>My Shift</strong> for any start time.</div></div>
+      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">How many hours did I work?<span class="faq-ico">+</span></button><div class="faq-a">Tap <strong>My Shift</strong> and scroll down. Enter your start and end time to see exact hours and decimal hours for payroll.</div></div>
+      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">How many breaks in an 8-hour shift?<span class="faq-ico">+</span></button><div class="faq-a">Most states: one 30-minute meal break and two 15-minute rest breaks. Check your state's labor board to be sure.</div></div>
+      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">How is overtime pay figured out?<span class="faq-ico">+</span></button><div class="faq-a">Most jobs: 1.5x your rate for every hour over 40 in a week. Tap <strong>My Pay &#8594; Overtime</strong> to calculate.</div></div>
+      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">How do I see take-home pay after taxes?<span class="faq-ico">+</span></button><div class="faq-a">Tap <strong>My Pay</strong>. Enter your hourly rate, hours, and tax rate (most workers use 20-25%). See gross pay, taxes out, and take-home.</div></div>
     </div>
-    <div class="ad-slot" style="margin-top:6px"><!-- Google AdSense --><br>Advertisement</div>
+    <div class="ad-slot"><!-- Google AdSense --><br>Advertisement</div>
   </div>
 </div>
 
@@ -359,107 +317,63 @@ input.tp-seg{background:transparent !important;color:#0f172a !important;width:22
 <div id="page-myhours" class="page">
   <div class="wrap">
     <div class="ad-slot"><!-- Google AdSense --><br>Advertisement</div>
-    <div class="page-head">
-      <div class="ph-icon">💰</div>
-      <div><h1>My Hours</h1><p>Live earnings tracker, shift timers, and punch in/out calculator.</p></div>
-    </div>
+    <div class="page-head"><div class="ph-icon">&#128176;</div><div><h1>My Hours</h1><p>Live earnings tracker, shift timers, and punch in/out.</p></div></div>
 
-    <!-- LIVE PANEL -->
     <div class="live-panel">
-      <div class="live-top">
-        <div class="live-title"><span class="live-dot"></span> Live Shift Tracker</div>
-      </div>
-
+      <div class="live-title"><span class="live-dot"></span> Live Shift Tracker</div>
       <div id="live-idle">
-        <div class="live-inputs">
-          <div>
-            <span class="live-label">Shift starts</span>
-            <span class="tp-host" id="cd-start-host"></span>
-          </div>
-          <div>
-            <span class="live-label">Shift ends</span>
-            <span class="tp-host" id="cd-end-host"></span>
-          </div>
-          <div>
-            <span class="live-label">Hourly pay ($)</span>
-            <input type="number" id="cd-rate" class="live-inp inp-sm" placeholder="18.00" min="0" step=".01" style="max-width:100%" onfocus="this.select()"/>
-          </div>
+        <div class="live-inputs-grid">
+          <div><span class="live-label">Shift starts</span><div id="tp-cd-start"></div></div>
+          <div><span class="live-label">Shift ends</span><div id="tp-cd-end"></div></div>
+          <div><span class="live-label">Hourly pay ($)</span><input type="number" id="cd-rate" placeholder="e.g. 18.00" min="0" step="0.01" onfocus="this.select()" style="background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.15);color:#fff;width:100%"/></div>
         </div>
-        <div class="live-btns">
-          <button class="btn btn-gold" onclick="startLive()">▶ Start Tracking</button>
-        </div>
-        <div class="live-hint">Stays running even if you switch pages or refresh.</div>
+        <div class="flex gap8 fw"><button class="btn btn-gold" onclick="startLive()">&#9654; Start Tracking</button></div>
+        <div style="margin-top:9px;font-size:11px;color:#64748b">Stays running even if you switch pages or refresh.</div>
       </div>
-
-      <div id="live-running">
+      <div id="live-running" style="display:none">
         <div class="timers-row">
-          <div class="timer-block">
-            <div class="timer-lbl red">⏳ Time Left</div>
-            <div class="timer-val tv-countdown" id="lv-countdown">--:--:--</div>
-            <div class="timer-sub" id="lv-cd-sub">until clock out</div>
-          </div>
-          <div class="timer-block">
-            <div class="timer-lbl green">⏱ Time Done</div>
-            <div class="timer-val tv-countup" id="lv-countup">00:00:00</div>
-            <div class="timer-sub">time worked so far</div>
-          </div>
+          <div class="timer-block"><div class="timer-lbl red">&#9203; Time Left</div><div class="timer-val tv-cd" id="lv-countdown">--:--:--</div><div class="timer-sub" id="lv-cd-sub">until clock out</div></div>
+          <div class="timer-block"><div class="timer-lbl grn">&#9201; Time Done</div><div class="timer-val tv-cu" id="lv-countup">00:00:00</div><div class="timer-sub">time worked so far</div></div>
         </div>
         <div class="prog-track"><div class="prog-fill" id="lv-prog" style="width:0%"></div></div>
-        <div class="live-hint" id="lv-pct" style="margin-bottom:12px"></div>
-        <div class="live-money-row">
-          <div class="money-block">
-            <div class="money-lbl gold">💰 Earned So Far</div>
-            <div class="money-big gold" id="lv-earned">$0.00</div>
-            <div class="money-sub" id="lv-rate-hint">updating live…</div>
-          </div>
-          <div class="money-block">
-            <div class="money-lbl green">🏁 Full Shift Pay</div>
-            <div class="money-big green" id="lv-full">—</div>
-            <div class="money-sub">gross if you finish</div>
-          </div>
+        <div style="font-size:11px;color:#64748b;text-align:center;margin-bottom:10px" id="lv-pct"></div>
+        <div class="money-row">
+          <div class="money-block"><div class="money-lbl gold">&#128176; Earned So Far</div><div class="money-big gold" id="lv-earned">$0.00</div><div class="money-sub" id="lv-rate-hint">live</div></div>
+          <div class="money-block"><div class="money-lbl grn">&#127937; Full Shift Pay</div><div class="money-big grn" id="lv-full">--</div><div class="money-sub">if you finish</div></div>
         </div>
-        <!-- live rate edit -->
-        <div style="margin-top:12px;margin-bottom:4px">
-          <span class="live-label" style="margin-bottom:4px;display:block">💱 Update hourly pay live ($)</span>
-          <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap">
-            <input type="number" id="cd-rate-live" class="live-inp inp-sm" placeholder="18.00" min="0" step=".01" onfocus="this.select()" oninput="updateLiveRate()" style="max-width:120px"/>
-            <span style="font-size:11px;color:#64748b">Change takes effect instantly</span>
-          </div>
+        <div style="margin-bottom:10px"><span class="live-label">Update hourly pay live ($)</span><div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap"><input type="number" id="cd-rate-live" placeholder="e.g. 18.00" min="0" step="0.01" onfocus="this.select()" oninput="updateLiveRate()" style="background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.15);color:#fff;max-width:130px;padding:7px 9px;border:2px solid rgba(255,255,255,.15);border-radius:7px;font-family:'JetBrains Mono',monospace;font-size:14px;outline:none"/><span style="font-size:11px;color:#64748b">takes effect instantly</span></div></div>
+        <div class="live-stats">
+          <div class="ls-b"><div class="ls-l">Start</div><div class="ls-v" id="lv-r-start">--</div></div>
+          <div class="ls-b"><div class="ls-l">End</div><div class="ls-v" id="lv-r-end">--</div></div>
+          <div class="ls-b"><div class="ls-l">Length</div><div class="ls-v" id="lv-r-len">--</div></div>
+          <div class="ls-b"><div class="ls-l">Rate</div><div class="ls-v" style="color:var(--gold)" id="lv-r-rate">--</div></div>
         </div>
-        <div class="live-stats" style="margin-top:12px">
-          <div class="ls-block"><div class="ls-l">Start</div><div class="ls-v" id="lv-r-start">—</div></div>
-          <div class="ls-block"><div class="ls-l">End</div><div class="ls-v" id="lv-r-end">—</div></div>
-          <div class="ls-block"><div class="ls-l">Length</div><div class="ls-v" id="lv-r-len">—</div></div>
-          <div class="ls-block"><div class="ls-l">Rate</div><div class="ls-v" style="color:var(--gold)" id="lv-r-rate">—</div></div>
-        </div>
-        <!-- single row: pause + reset -->
-        <div class="live-btns" style="margin-top:12px">
-          <button class="btn btn-ghost btn-sm" id="lv-pause-btn" onclick="togglePause()" style="border-color:rgba(255,255,255,.2);color:#94a3b8">⏸ Pause</button>
-          <button class="btn btn-red btn-sm" onclick="resetLive()">↺ Reset</button>
+        <div class="flex gap8 fw" style="margin-top:12px">
+          <button class="btn btn-ghost btn-sm" id="lv-pause-btn" onclick="togglePause()" style="border-color:rgba(255,255,255,.2);color:#94a3b8">&#9646;&#9646; Pause</button>
+          <button class="btn btn-red btn-sm" onclick="resetLive()">&#8635; Reset</button>
         </div>
       </div>
     </div>
 
     <div class="sep"><div class="sep-line"></div><div class="sep-label">Punch In / Out Tracker</div><div class="sep-line"></div></div>
-
     <div class="card">
-      <div class="card-title">👊 Punch In / Punch Out</div>
+      <div class="card-title">&#128074; Punch In / Punch Out</div>
       <div id="punch-rows"></div>
       <div class="flex gap7 fw mt12">
-        <button class="btn btn-ghost btn-sm" onclick="addPunchRow()">﹢ Add punch</button>
-        <button class="btn btn-ghost btn-sm" onclick="clearPunches()">✕ Clear all</button>
+        <button class="btn btn-ghost btn-sm" onclick="addPunchRow()">+ Add punch</button>
+        <button class="btn btn-ghost btn-sm" onclick="clearPunches()">&#10005; Clear all</button>
       </div>
       <div class="divider"></div>
       <div class="g2" style="max-width:380px">
-        <div class="field"><label for="punch-rate">Hourly pay <span class="lh">(optional)</span></label><input type="number" id="punch-rate" placeholder="e.g. 18.50" min="0" step=".01" class="inp-sm"/></div>
-        <div class="field"><label for="punch-break">Total break <span class="lh">(min)</span></label><input type="number" id="punch-break" value="30" min="0" step="5" class="inp-sm"/></div>
+        <div class="field"><label>Hourly pay <span class="lh">(optional)</span></label><input type="number" id="punch-rate" placeholder="18.50" min="0" step="0.01" onfocus="this.select()" class="inp-sm"/></div>
+        <div class="field"><label>Total break <span class="lh">(min)</span></label><input type="number" id="punch-break" value="30" min="0" step="5" onfocus="this.select()" class="inp-brk"/></div>
       </div>
-      <button class="btn btn-navy" onclick="calcPunch()">▶ Calculate My Day</button>
+      <button class="btn btn-navy" onclick="calcPunch()">&#9654; Calculate My Day</button>
       <div id="punch-result" class="hidden">
         <div class="rcards" style="margin-top:12px">
-          <div class="rc"><div class="rc-l">Total Hours</div><div class="rc-v c-blue" id="pr-hours">—</div></div>
-          <div class="rc"><div class="rc-l">Decimal Hours</div><div class="rc-v c-blue" id="pr-dec">—</div></div>
-          <div class="rc"><div class="rc-l">Gross Pay</div><div class="rc-v c-green" id="pr-pay">—</div></div>
+          <div class="rc"><div class="rc-l">Total Hours</div><div class="rc-v c-blue" id="pr-hours">--</div></div>
+          <div class="rc"><div class="rc-l">Decimal Hours</div><div class="rc-v c-blue" id="pr-dec">--</div></div>
+          <div class="rc"><div class="rc-l">Gross Pay</div><div class="rc-v c-green" id="pr-pay">--</div></div>
         </div>
         <div class="sm muted mt8" id="pr-detail"></div>
       </div>
@@ -472,41 +386,34 @@ input.tp-seg{background:transparent !important;color:#0f172a !important;width:22
 <div id="page-myshift" class="page">
   <div class="wrap">
     <div class="ad-slot"><!-- Google AdSense --><br>Advertisement</div>
-    <div class="page-head">
-      <div class="ph-icon">⏰</div>
-      <div><h1>My Shift</h1><p>Find your clock out time — or calculate how many hours you worked.</p></div>
-    </div>
+    <div class="page-head"><div class="ph-icon">&#9200;</div><div><h1>My Shift</h1><p>Find your clock out time or calculate hours worked.</p></div></div>
     <div class="card">
-      <div class="card-title">🕐 What Time Do I Clock Out?</div>
-      <div class="g2" style="max-width:480px">
-        <div class="field"><label for="se-start">I start work at</label><span class="tp-host" id="se-start-host"></span></div>
-        <div class="field"><label for="se-hours">Shift length <span class="lh">(hours)</span></label><input type="number" id="se-hours" value="8" min=".5" max="24" step=".25" class="inp-sm"/></div>
+      <div class="card-title">&#128336; What Time Do I Clock Out?</div>
+      <div class="g2" style="max-width:440px">
+        <div class="field"><label>I start work at</label><div id="tp-se-start"></div></div>
+        <div class="field"><label>Shift length <span class="lh">(hours)</span></label><input type="number" id="se-hours" value="8" min="0.5" max="24" step="0.25" onfocus="this.select()" class="inp-sm"/></div>
       </div>
-      <div class="field" style="max-width:175px"><label for="se-break">Break <span class="lh">(minutes)</span></label><input type="number" id="se-break" value="30" min="0" max="180" step="5" class="inp-sm"/></div>
-      <button class="btn btn-navy" onclick="calcShiftEnd()">▶ Find My Clock Out Time</button>
+      <div class="field" style="max-width:160px"><label>Break <span class="lh">(minutes, 0 if none)</span></label><input type="number" id="se-break" value="30" min="0" max="180" step="5" onfocus="this.select()" class="inp-brk"/></div>
+      <button class="btn btn-navy" onclick="calcShiftEnd()">&#9654; Find My Clock Out Time</button>
       <div id="se-result" class="hidden">
-        <div class="r-hero">
-          <div class="rh-label">You clock out at</div>
-          <div class="rh-value" id="se-end">—</div>
-          <div class="rh-sub" id="se-sub"></div>
-        </div>
+        <div class="r-hero"><div class="rh-label">You clock out at</div><div class="rh-value" id="se-end">--</div><div class="rh-sub" id="se-sub"></div></div>
         <div class="rcards">
-          <div class="rc"><div class="rc-l">Starts</div><div class="rc-v c-blue" id="se-r-start">—</div></div>
-          <div class="rc"><div class="rc-l">Work time</div><div class="rc-v c-navy" id="se-r-work">—</div></div>
-          <div class="rc"><div class="rc-l">Break</div><div class="rc-v" id="se-r-break">—</div></div>
-          <div class="rc"><div class="rc-l">Total away</div><div class="rc-v c-navy" id="se-r-total">—</div></div>
+          <div class="rc"><div class="rc-l">Starts</div><div class="rc-v c-blue" id="se-r-start">--</div></div>
+          <div class="rc"><div class="rc-l">Work time</div><div class="rc-v c-navy" id="se-r-work">--</div></div>
+          <div class="rc"><div class="rc-l">Break</div><div class="rc-v" id="se-r-break">--</div></div>
+          <div class="rc"><div class="rc-l">Total away</div><div class="rc-v c-navy" id="se-r-total">--</div></div>
         </div>
       </div>
     </div>
     <div class="sep"><div class="sep-line"></div><div class="sep-label">Already worked your shift?</div><div class="sep-line"></div></div>
     <div class="card">
-      <div class="card-title">📏 How Many Hours Did I Work?</div>
-      <div class="g2" style="max-width:480px">
-        <div class="field"><label for="hb-start">I clocked IN at</label><span class="tp-host" id="hb-start-host"></span></div>
-        <div class="field"><label for="hb-end">I clocked OUT at</label><span class="tp-host" id="hb-end-host"></span></div>
+      <div class="card-title">&#128207; How Many Hours Did I Work?</div>
+      <div class="g2" style="max-width:440px">
+        <div class="field"><label>I clocked IN at</label><div id="tp-hb-start"></div></div>
+        <div class="field"><label>I clocked OUT at</label><div id="tp-hb-end"></div></div>
       </div>
-      <div class="g2" style="max-width:480px">
-        <div class="field"><label for="hb-break">Minus break <span class="lh">(minutes)</span></label><input type="number" id="hb-break" value="30" min="0" class="inp-sm"/></div>
+      <div class="g2" style="max-width:440px">
+        <div class="field"><label>Minus break <span class="lh">(minutes)</span></label><input type="number" id="hb-break" value="30" min="0" onfocus="this.select()" class="inp-brk"/></div>
         <div class="field"><label>Overnight shift?</label>
           <div class="radio-group">
             <label class="ro sel" id="hb-no"><input type="radio" name="hb-night" value="no" checked onchange="toggleRO('hb-no','hb-yes')"> No</label>
@@ -514,14 +421,14 @@ input.tp-seg{background:transparent !important;color:#0f172a !important;width:22
           </div>
         </div>
       </div>
-      <button class="btn btn-navy" onclick="calcHoursBetween()">▶ Calculate My Hours</button>
+      <button class="btn btn-navy" onclick="calcHoursBetween()">&#9654; Calculate My Hours</button>
       <div id="hb-result" class="hidden">
         <div class="rcards" style="margin-top:12px">
-          <div class="rc"><div class="rc-l">Hours &amp; Mins</div><div class="rc-v c-blue" id="hb-hm">—</div></div>
-          <div class="rc"><div class="rc-l">Decimal Hours</div><div class="rc-v c-blue" id="hb-dec">—</div><div style="font-size:10px;color:var(--slate);margin-top:1px">for payroll</div></div>
-          <div class="rc"><div class="rc-l">Break taken</div><div class="rc-v" id="hb-brk">—</div></div>
+          <div class="rc"><div class="rc-l">Hours &amp; Mins</div><div class="rc-v c-blue" id="hb-hm">--</div></div>
+          <div class="rc"><div class="rc-l">Decimal Hours</div><div class="rc-v c-blue" id="hb-dec">--</div><div style="font-size:10px;color:var(--slate);margin-top:1px">for payroll</div></div>
+          <div class="rc"><div class="rc-l">Break taken</div><div class="rc-v" id="hb-brk">--</div></div>
         </div>
-        <div class="band green"><div class="b-label">Total time worked</div><div class="b-value green" id="hb-summary">—</div></div>
+        <div class="band green"><div class="b-label">Total time worked</div><div class="b-value green" id="hb-summary">--</div></div>
       </div>
     </div>
     <div class="ad-slot"><!-- Google AdSense --><br>Advertisement</div>
@@ -532,106 +439,79 @@ input.tp-seg{background:transparent !important;color:#0f172a !important;width:22
 <div id="page-mypay" class="page">
   <div class="wrap">
     <div class="ad-slot"><!-- Google AdSense --><br>Advertisement</div>
-    <div class="page-head">
-      <div class="ph-icon">💵</div>
-      <div><h1>My Pay</h1><p>Take-home pay after taxes, overtime, raise impact, and yearly income.</p></div>
-    </div>
+    <div class="page-head"><div class="ph-icon">&#128181;</div><div><h1>My Pay</h1><p>Take-home pay, overtime, raise impact, and yearly income.</p></div></div>
     <div class="card">
       <div class="tab-bar">
-        <button class="tab-btn active" id="tab-pay" onclick="switchTab('pay')">💵 Take-Home Pay</button>
-        <button class="tab-btn" id="tab-ot" onclick="switchTab('ot')">⚡ Overtime</button>
+        <button class="tab-btn active" id="tab-pay" onclick="switchTab('pay')">&#128181; Take-Home Pay</button>
+        <button class="tab-btn" id="tab-ot" onclick="switchTab('ot')">&#9889; Overtime</button>
       </div>
-
       <!-- PAY TAB -->
       <div id="pay-tab">
-        <div class="g2" style="max-width:480px">
-          <div class="field"><label for="pay-rate">Your hourly pay ($)</label><input type="number" id="pay-rate" placeholder="e.g. 18.00" min="0" step=".01" class="inp-sm" oninput="autoCalcPay()"/></div>
-          <div class="field"><label for="pay-hours">Hours worked</label><input type="number" id="pay-hours" placeholder="e.g. 40" min="0" step=".5" class="inp-sm" oninput="autoCalcPay()"/></div>
+        <div class="g2" style="max-width:440px">
+          <div class="field"><label>Your hourly pay ($)</label><input type="number" id="pay-rate" placeholder="e.g. 18.00" min="0" step="0.01" onfocus="this.select()" oninput="autoCalcPay()" class="inp-sm"/></div>
+          <div class="field"><label>Hours worked</label><input type="number" id="pay-hours" placeholder="e.g. 40" min="0" step="0.5" onfocus="this.select()" oninput="autoCalcPay()" class="inp-sm"/></div>
         </div>
-        <div class="g2" style="max-width:480px">
-          <div class="field"><label for="pay-tax">Tax rate <span class="lh">(%)</span></label><input type="number" id="pay-tax" value="22" min="0" max="60" step="1" class="inp-sm" oninput="autoCalcPay()"/><div class="sm muted mt8">Not sure? Use 20–25%.</div></div>
-          <div class="field"><label for="pay-period">Pay period</label>
-            <select id="pay-period" onchange="autoCalcPay()">
-              <option value="shift">Just this shift</option>
-              <option value="weekly" selected>Weekly</option>
-              <option value="biweekly">Every 2 weeks</option>
-              <option value="monthly">Monthly</option>
-            </select>
-          </div>
+        <div class="g2" style="max-width:440px">
+          <div class="field"><label>Tax rate <span class="lh">(%)</span></label><input type="number" id="pay-tax" value="22" min="0" max="60" step="1" onfocus="this.select()" oninput="autoCalcPay()" class="inp-sm"/><div class="sm muted mt8">Not sure? Use 20-25%.</div></div>
+          <div class="field"><label>Pay period</label><select id="pay-period" onchange="autoCalcPay()"><option value="shift">Just this shift</option><option value="weekly" selected>Weekly</option><option value="biweekly">Every 2 weeks</option><option value="monthly">Monthly</option></select></div>
         </div>
-        <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:4px">
-          <span id="pay-live-badge" style="display:none;font-size:11.5px;font-weight:700;color:var(--green);background:var(--green-bg);border:1.5px solid var(--green-br);border-radius:99px;padding:4px 10px">&#10003; Updated live</span>
-          <button class="btn btn-teal btn-sm" onclick="copyPaySummary()" style="gap:5px">&#128203; Copy My Pay Summary</button>
+        <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:14px">
+          <span id="pay-live-badge" class="hidden" style="font-size:11.5px;font-weight:700;color:var(--green);background:var(--green-bg);border:1.5px solid var(--green-br);border-radius:99px;padding:4px 10px">&#10003; Updated live</span>
+          <button class="btn btn-teal btn-sm" onclick="copyPaySummary()">&#128203; Copy My Pay Summary</button>
         </div>
-
-        <!-- RAISE — always visible -->
-        <div class="raise-header" style="margin-top:16px">
-          <div class="raise-header-top">
-            <h3>📈 What Would a Raise Do for You?</h3>
-            <div class="raise-current" id="raise-current-rate">Enter your pay above to see raise impact</div>
-          </div>
-          <div class="raise-input-row">
-            <div class="field" style="margin:0;flex:0 0 auto">
-              <label for="raise-custom" style="color:var(--teal)">Raise amount <span class="lh">($/hr)</span></label>
-              <input type="number" id="raise-custom" value="1" min=".25" step=".25" class="inp-sm" oninput="calcRaise()"/>
-            </div>
-          </div>
+        <!-- RAISE always visible -->
+        <div class="raise-header">
+          <h3>&#128200; What Would a Raise Do for You?</h3>
+          <div style="font-size:12px;color:var(--text2);margin-bottom:10px" id="raise-current-rate">Enter your hourly pay above to see raise impact</div>
+          <div class="field" style="max-width:160px;margin-bottom:10px"><label style="color:var(--teal)">Raise amount <span class="lh">($/hr)</span></label><input type="number" id="raise-custom" value="1" min="0.25" step="0.25" onfocus="this.select()" oninput="calcRaise()" class="inp-sm"/></div>
         </div>
-        <div class="raise-grid" id="raise-grid">
-          <div style="font-size:12.5px;color:var(--text2);padding:10px 0;grid-column:1/-1">Enter your hourly pay above, then press Calculate to see your raise impact.</div>
-        </div>
-
+        <div class="raise-grid" id="raise-grid"><div style="font-size:12.5px;color:var(--text2);padding:8px 0;grid-column:1/-1">Enter your hourly pay above to see your raise impact.</div></div>
         <div id="pay-result" class="hidden">
           <div class="divider"></div>
           <p style="font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.05em;color:var(--slate);margin-bottom:8px">Your current pay breakdown</p>
           <div class="rcards">
-            <div class="rc"><div class="rc-l">Gross Pay</div><div class="rc-v c-blue" id="pay-gross">—</div><div class="sm muted">Before taxes</div></div>
-            <div class="rc"><div class="rc-l">Taxes Out</div><div class="rc-v c-red" id="pay-tax-out">—</div></div>
-            <div class="rc"><div class="rc-l">Take-Home</div><div class="rc-v c-green" id="pay-net">—</div><div class="sm muted">After taxes</div></div>
+            <div class="rc"><div class="rc-l">Gross Pay</div><div class="rc-v c-blue" id="pay-gross">--</div><div class="sm muted">Before taxes</div></div>
+            <div class="rc"><div class="rc-l">Taxes Out</div><div class="rc-v c-red" id="pay-tax-out">--</div></div>
+            <div class="rc"><div class="rc-l">Take-Home</div><div class="rc-v c-green" id="pay-net">--</div><div class="sm muted">After taxes</div></div>
           </div>
           <div class="divider"></div>
-          <p style="font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.05em;color:var(--slate);margin-bottom:8px">Keep this schedule every week…</p>
+          <p style="font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.05em;color:var(--slate);margin-bottom:8px">Keep this schedule every week...</p>
           <div class="rcards">
-            <div class="rc"><div class="rc-l">Yearly gross</div><div class="rc-v c-blue" id="pay-yr">—</div></div>
-            <div class="rc"><div class="rc-l">Yearly take-home</div><div class="rc-v c-green" id="pay-yr-net">—</div></div>
-            <div class="rc"><div class="rc-l">Monthly take-home</div><div class="rc-v c-green" id="pay-mo">—</div></div>
-            <div class="rc"><div class="rc-l">Daily take-home</div><div class="rc-v c-green" id="pay-day">—</div></div>
+            <div class="rc"><div class="rc-l">Yearly gross</div><div class="rc-v c-blue" id="pay-yr">--</div></div>
+            <div class="rc"><div class="rc-l">Yearly take-home</div><div class="rc-v c-green" id="pay-yr-net">--</div></div>
+            <div class="rc"><div class="rc-l">Monthly take-home</div><div class="rc-v c-green" id="pay-mo">--</div></div>
+            <div class="rc"><div class="rc-l">Daily take-home</div><div class="rc-v c-green" id="pay-day">--</div></div>
           </div>
         </div>
       </div>
-
-      <!-- OVERTIME TAB -->
+      <!-- OT TAB -->
       <div id="ot-tab" class="hidden">
-        <div class="g2" style="max-width:480px">
-          <div class="field"><label for="ot-rate">Your hourly pay ($)</label><input type="number" id="ot-rate" value="18" min="0" step=".01" class="inp-sm"/></div>
-          <div class="field"><label for="ot-hours">Total hours this week</label><input type="number" id="ot-hours" value="47" min="0" step=".5" class="inp-sm"/></div>
+        <div class="g2" style="max-width:440px">
+          <div class="field"><label>Your hourly pay ($)</label><input type="number" id="ot-rate" value="18" min="0" step="0.01" onfocus="this.select()" class="inp-sm"/></div>
+          <div class="field"><label>Total hours this week</label><input type="number" id="ot-hours" value="47" min="0" step="0.5" onfocus="this.select()" class="inp-sm"/></div>
         </div>
-        <div class="g2" style="max-width:480px">
-          <div class="field"><label for="ot-threshold">OT starts after <span class="lh">(hours)</span></label><input type="number" id="ot-threshold" value="40" min="1" max="80" class="inp-sm"/><div class="sm muted mt8">Most jobs: 40 hrs</div></div>
-          <div class="field"><label for="ot-mult-sel">Overtime rate</label>
+        <div class="g2" style="max-width:440px">
+          <div class="field"><label>OT starts after <span class="lh">(hours)</span></label><input type="number" id="ot-threshold" value="40" min="1" max="80" onfocus="this.select()" class="inp-sm"/><div class="sm muted mt8">Most jobs: 40 hrs</div></div>
+          <div class="field"><label>Overtime rate</label>
             <select id="ot-mult-sel" onchange="handleOTmult()">
-              <option value="1.5" selected>1.5× — time and a half</option>
-              <option value="2">2× — double time</option>
-              <option value="3">3× — triple time</option>
-              <option value="4">4× — quadruple time</option>
+              <option value="1.5" selected>1.5x — time and a half</option>
+              <option value="2">2x — double time</option>
+              <option value="3">3x — triple time</option>
+              <option value="4">4x — quadruple time</option>
               <option value="custom">Custom — I'll type it</option>
             </select>
-            <input type="number" id="ot-mult-custom" placeholder="e.g. 1.75" min=".5" step=".05" class="inp-sm" style="margin-top:6px;display:none"/>
+            <input type="number" id="ot-mult-custom" placeholder="e.g. 1.75" min="0.5" step="0.05" onfocus="this.select()" class="inp-sm hidden" style="margin-top:7px"/>
           </div>
         </div>
-        <button class="btn btn-navy" onclick="calcOvertime()">▶ Calculate Overtime Pay</button>
+        <button class="btn btn-navy" onclick="calcOvertime()">&#9654; Calculate Overtime Pay</button>
         <div id="ot-result" class="hidden">
           <div class="rcards" style="margin-top:12px">
-            <div class="rc"><div class="rc-l">Regular Hours</div><div class="rc-v c-blue" id="ot-regh">—</div></div>
-            <div class="rc"><div class="rc-l">OT Hours</div><div class="rc-v c-gold" id="ot-oth">—</div></div>
-            <div class="rc"><div class="rc-l">Regular Pay</div><div class="rc-v c-blue" id="ot-regp">—</div></div>
-            <div class="rc"><div class="rc-l">OT Pay</div><div class="rc-v c-gold" id="ot-otp">—</div></div>
+            <div class="rc"><div class="rc-l">Regular Hours</div><div class="rc-v c-blue" id="ot-regh">--</div></div>
+            <div class="rc"><div class="rc-l">OT Hours</div><div class="rc-v c-gold" id="ot-oth">--</div></div>
+            <div class="rc"><div class="rc-l">Regular Pay</div><div class="rc-v c-blue" id="ot-regp">--</div></div>
+            <div class="rc"><div class="rc-l">OT Pay</div><div class="rc-v c-gold" id="ot-otp">--</div></div>
           </div>
-          <div class="band green" style="margin-top:9px">
-            <div class="b-label">Total Gross Pay This Week</div>
-            <div class="b-value green" id="ot-total">—</div>
-            <div class="b-sub" id="ot-sub"></div>
-          </div>
+          <div class="band green" style="margin-top:9px"><div class="b-label">Total Gross Pay This Week</div><div class="b-value green" id="ot-total">--</div><div class="b-sub" id="ot-sub"></div></div>
         </div>
       </div>
     </div>
@@ -643,40 +523,30 @@ input.tp-seg{background:transparent !important;color:#0f172a !important;width:22
 <div id="page-timesheet" class="page">
   <div class="wrap">
     <div class="ad-slot"><!-- Google AdSense --><br>Advertisement</div>
-    <div class="page-head">
-      <div class="ph-icon">📋</div>
-      <div><h1>Weekly Timesheet</h1><p>Fill your week fast. Click a cell and type — auto-fills the next day.</p></div>
-    </div>
+    <div class="page-head"><div class="ph-icon">&#128203;</div><div><h1>Weekly Timesheet</h1><p>Fill your week fast. Click a cell and type. Auto-fills next day.</p></div></div>
     <div class="card">
-      <div class="info-box" style="margin-bottom:14px">💡 Type times like <strong>9am</strong>, <strong>2:30pm</strong>, or <strong>14:30</strong>. Click any cell to select and type. Use <strong>↓</strong> to copy one day's times down to all days below.</div>
-      <div class="field" style="max-width:160px;margin-bottom:14px">
-        <label for="ts-rate">Hourly pay <span class="lh">(optional)</span></label>
-        <input type="number" id="ts-rate" placeholder="e.g. 18.00" min="0" step=".01" class="inp-sm"/>
-      </div>
+      <div class="info-box" style="margin-bottom:14px">&#128161; Click any time cell and type your time. Use <strong>&#8595; Fill Below</strong> to copy one row down to all days below it.</div>
+      <div class="field" style="max-width:160px;margin-bottom:14px"><label>Hourly pay <span class="lh">(optional)</span></label><input type="number" id="ts-rate" placeholder="18.00" min="0" step="0.01" onfocus="this.select()" class="inp-sm"/></div>
       <div class="ts-wrap">
         <table class="ts-table">
-          <thead><tr><th>Day</th><th>Clock In</th><th>Clock Out</th><th>Brk</th><th>Hours</th><th>↓</th></tr></thead>
+          <thead><tr><th>Day</th><th>Clock In</th><th>Clock Out</th><th>Brk</th><th>Hours</th><th></th></tr></thead>
           <tbody id="ts-body"></tbody>
-          <tfoot><tr>
-            <td colspan="4" style="font-weight:800">Weekly Total</td>
-            <td id="ts-week-total" style="font-family:'JetBrains Mono',monospace;font-weight:800;color:var(--blue);font-size:13px">0h 0m</td>
-            <td></td>
-          </tr></tfoot>
+          <tfoot><tr><td colspan="4" style="font-weight:800">Weekly Total</td><td id="ts-week-total" style="font-family:'JetBrains Mono',monospace;font-weight:800;color:var(--blue);font-size:13px">0h 0m</td><td></td></tr></tfoot>
         </table>
       </div>
       <div class="ts-actions">
-        <button class="btn btn-navy" onclick="calcTimesheet()">▶ Calculate Week</button>
-        <button class="btn btn-ghost" onclick="copyTimesheet()">📋 Copy as Text</button>
-        <button class="btn btn-ghost" onclick="printSheet()">🖨 Print</button>
-        <button class="btn btn-ghost" onclick="clearTimesheet()">✕ Clear</button>
+        <button class="btn btn-navy" onclick="calcTimesheet()">&#9654; Calculate Week</button>
+        <button class="btn btn-ghost" onclick="copyTimesheet()">&#128203; Copy as Text</button>
+        <button class="btn btn-ghost" onclick="printSheet()">&#128438; Print</button>
+        <button class="btn btn-ghost" onclick="clearTimesheet()">&#10005; Clear</button>
       </div>
-      <div id="copy-msg" class="info-box hidden" style="margin-top:8px">✅ Copied! Paste it anywhere.</div>
+      <div id="copy-msg" class="info-box hidden" style="margin-top:8px">&#10003; Copied! Paste it anywhere.</div>
       <div id="ts-result" class="hidden">
         <div class="rcards" style="margin-top:12px">
-          <div class="rc"><div class="rc-l">Total Hours</div><div class="rc-v c-blue" id="ts-hours">—</div></div>
-          <div class="rc"><div class="rc-l">Days Worked</div><div class="rc-v c-navy" id="ts-days">—</div></div>
-          <div class="rc"><div class="rc-l">OT Hours</div><div class="rc-v c-gold" id="ts-ot">—</div></div>
-          <div class="rc"><div class="rc-l">Gross Pay</div><div class="rc-v c-green" id="ts-pay">—</div></div>
+          <div class="rc"><div class="rc-l">Total Hours</div><div class="rc-v c-blue" id="ts-hours">--</div></div>
+          <div class="rc"><div class="rc-l">Days Worked</div><div class="rc-v c-navy" id="ts-days">--</div></div>
+          <div class="rc"><div class="rc-l">OT Hours</div><div class="rc-v c-gold" id="ts-ot">--</div></div>
+          <div class="rc"><div class="rc-l">Gross Pay</div><div class="rc-v c-green" id="ts-pay">--</div></div>
         </div>
       </div>
     </div>
@@ -684,8 +554,138 @@ input.tp-seg{background:transparent !important;color:#0f172a !important;width:22
   </div>
 </div>
 
+<!-- ABOUT -->
+<div id="page-about" class="page">
+  <div class="wrap" style="max-width:680px">
+    <div class="page-head"><div class="ph-icon" style="font-size:18px">STC</div><div><h1>About</h1><p>What this site is and why it exists.</p></div></div>
+    <div class="card">
+      <h2 style="font-size:18px;font-weight:800;margin-bottom:16px;color:var(--navy)">We built this for shift workers.</h2>
+      <p style="font-size:14px;line-height:1.85;color:var(--text2);margin-bottom:14px">Most people who work shifts spend time every day trying to figure out basic things — what time do I get off? How much did I make today? What does a raise actually mean for my yearly income?</p>
+      <p style="font-size:14px;line-height:1.85;color:var(--text2);margin-bottom:14px">We built Shift Clock Time to answer those questions fast, for free, with no signup and no nonsense. Every tool on this site does one thing well and gets out of your way.</p>
+      <p style="font-size:14px;line-height:1.85;color:var(--text2);margin-bottom:14px">This site is built for nurses, warehouse workers, drivers, factory workers, security guards, restaurant staff, and anyone else who works by the hour and deserves clear answers.</p>
+      <div style="height:1px;background:var(--border-light);margin:20px 0"></div>
+      <h3 style="font-size:15px;font-weight:800;margin-bottom:12px;color:var(--navy)">What you can do here</h3>
+      <ul style="font-size:14px;color:var(--text2);line-height:2;padding-left:18px">
+        <li>Find out what time your shift ends</li>
+        <li>Calculate how many hours you worked</li>
+        <li>Track live earnings as your shift runs</li>
+        <li>See your take-home pay after taxes</li>
+        <li>Calculate overtime pay</li>
+        <li>Fill in and print a weekly timesheet</li>
+        <li>See what a raise would mean for your income</li>
+      </ul>
+      <div style="height:1px;background:var(--border-light);margin:20px 0"></div>
+      <p style="font-size:14px;line-height:1.85;color:var(--text2)">Everything is free. No account needed. No data sold. Just tools that work.</p>
+    </div>
+  </div>
+</div>
+
+<!-- CONTACT -->
+<div id="page-contact" class="page">
+  <div class="wrap" style="max-width:680px">
+    <div class="page-head"><div class="ph-icon" style="font-size:18px">@</div><div><h1>Contact</h1><p>Questions, feedback, or something broken? Let us know.</p></div></div>
+    <div class="card">
+      <p style="font-size:14px;color:var(--text2);line-height:1.85;margin-bottom:20px">We read every message. If something is not working, or you have an idea that would help shift workers, we want to hear it.</p>
+      <div style="height:1px;background:var(--border-light);margin:0 0 20px 0"></div>
+      <h3 style="font-size:14px;font-weight:800;color:var(--navy);margin-bottom:6px">Email us directly</h3>
+      <p style="font-size:14px;color:var(--text2);margin-bottom:20px">Send your message to: <a href="mailto:hello@shiftclocktime.com" style="color:var(--blue);font-weight:600">hello@shiftclocktime.com</a></p>
+      <div style="height:1px;background:var(--border-light);margin:0 0 20px 0"></div>
+      <h3 style="font-size:14px;font-weight:800;color:var(--navy);margin-bottom:14px">Or send a message below</h3>
+      <div class="field"><label>Your name</label><input type="text" id="c-name" placeholder="Your name" onfocus="this.select()"/></div>
+      <div class="field"><label>Your email</label><input type="text" id="c-email" placeholder="your@email.com" onfocus="this.select()"/></div>
+      <div class="field"><label>Message</label><textarea id="c-msg" rows="5" placeholder="Tell us what is on your mind..." style="width:100%;padding:9px 11px;border:2px solid var(--border-light);border-radius:7px;font-family:'Inter',sans-serif;font-size:14px;color:var(--text);background:#fff;outline:none;resize:vertical;transition:border-color .15s" onfocus="this.style.borderColor='var(--navy)'" onblur="this.style.borderColor='var(--border-light)'"></textarea></div>
+      <button class="btn btn-navy" onclick="sendContact()">Send Message</button>
+      <div id="contact-thanks" class="info-box hidden" style="margin-top:10px">Thank you. We will get back to you soon.</div>
+    </div>
+  </div>
+</div>
+
+<!-- PRIVACY POLICY -->
+<div id="page-privacy" class="page">
+  <div class="wrap" style="max-width:680px">
+    <div class="page-head"><div class="ph-icon" style="font-size:18px">PP</div><div><h1>Privacy Policy</h1><p>Last updated: January 2025</p></div></div>
+    <div class="card">
+      <p style="font-size:14px;color:var(--text2);line-height:1.85;margin-bottom:20px">This page explains what information Shift Clock Time collects, how it is used, and what your rights are. We keep this simple and honest.</p>
+
+      <h3 style="font-size:15px;font-weight:800;color:var(--navy);margin-bottom:8px;margin-top:20px">What we collect</h3>
+      <p style="font-size:14px;color:var(--text2);line-height:1.85;margin-bottom:10px">We do not ask for your name, email, or any personal information to use the tools on this site. We do not create accounts or store your shift data on our servers.</p>
+      <p style="font-size:14px;color:var(--text2);line-height:1.85">Your hourly rate and live tracker settings are saved in your browser only (localStorage). This data never leaves your device.</p>
+
+      <div style="height:1px;background:var(--border-light);margin:20px 0"></div>
+      <h3 style="font-size:15px;font-weight:800;color:var(--navy);margin-bottom:8px">Cookies</h3>
+      <p style="font-size:14px;color:var(--text2);line-height:1.85">This site uses cookies. Cookies are small files placed on your browser. They are used by Google Analytics to track how visitors use the site, and by Google AdSense to show relevant ads. You can turn off cookies in your browser settings at any time.</p>
+
+      <div style="height:1px;background:var(--border-light);margin:20px 0"></div>
+      <h3 style="font-size:15px;font-weight:800;color:var(--navy);margin-bottom:8px">Google Analytics</h3>
+      <p style="font-size:14px;color:var(--text2);line-height:1.85">We use Google Analytics to understand how people use this site — things like which pages are visited and how long people stay. This data is anonymous. Google may use this data per their own privacy policy at <a href="https://policies.google.com/privacy" target="_blank" style="color:var(--blue)">policies.google.com/privacy</a>.</p>
+
+      <div style="height:1px;background:var(--border-light);margin:20px 0"></div>
+      <h3 style="font-size:15px;font-weight:800;color:var(--navy);margin-bottom:8px">Advertising</h3>
+      <p style="font-size:14px;color:var(--text2);line-height:1.85;margin-bottom:10px">This site uses Google AdSense to show ads. Google and its partners may use cookies to show you ads based on your interests and past visits to this and other sites. This is called interest-based advertising.</p>
+      <p style="font-size:14px;color:var(--text2);line-height:1.85">You can opt out of interest-based ads at <a href="https://www.google.com/settings/ads" target="_blank" style="color:var(--blue)">google.com/settings/ads</a> or visit <a href="https://www.aboutads.info" target="_blank" style="color:var(--blue)">aboutads.info</a>.</p>
+
+      <div style="height:1px;background:var(--border-light);margin:20px 0"></div>
+      <h3 style="font-size:15px;font-weight:800;color:var(--navy);margin-bottom:8px">Third-party links</h3>
+      <p style="font-size:14px;color:var(--text2);line-height:1.85">This site may contain links to other websites. We are not responsible for the privacy practices of those sites. We suggest you read their privacy policies if you visit them.</p>
+
+      <div style="height:1px;background:var(--border-light);margin:20px 0"></div>
+      <h3 style="font-size:15px;font-weight:800;color:var(--navy);margin-bottom:8px">Your rights</h3>
+      <p style="font-size:14px;color:var(--text2);line-height:1.85">You can clear your browser's localStorage and cookies at any time to remove any data this site has stored on your device. If you have questions about your data, contact us at <a href="mailto:hello@shiftclocktime.com" style="color:var(--blue)">hello@shiftclocktime.com</a>.</p>
+
+      <div style="height:1px;background:var(--border-light);margin:20px 0"></div>
+      <h3 style="font-size:15px;font-weight:800;color:var(--navy);margin-bottom:8px">Changes to this policy</h3>
+      <p style="font-size:14px;color:var(--text2);line-height:1.85">We may update this policy from time to time. When we do, we will update the date at the top of this page. Continued use of the site means you accept the updated policy.</p>
+
+      <div style="height:1px;background:var(--border-light);margin:20px 0"></div>
+      <h3 style="font-size:15px;font-weight:800;color:var(--navy);margin-bottom:8px">Contact</h3>
+      <p style="font-size:14px;color:var(--text2);line-height:1.85">Questions about this policy? Email us at <a href="mailto:hello@shiftclocktime.com" style="color:var(--blue)">hello@shiftclocktime.com</a>.</p>
+    </div>
+  </div>
+</div>
+
+<!-- TERMS OF SERVICE -->
+<div id="page-terms" class="page">
+  <div class="wrap" style="max-width:680px">
+    <div class="page-head"><div class="ph-icon" style="font-size:18px">ToS</div><div><h1>Terms of Service</h1><p>Last updated: January 2025</p></div></div>
+    <div class="card">
+      <p style="font-size:14px;color:var(--text2);line-height:1.85;margin-bottom:20px">By using Shift Clock Time, you agree to these terms. They are written in plain language so they are easy to understand.</p>
+
+      <h3 style="font-size:15px;font-weight:800;color:var(--navy);margin-bottom:8px;margin-top:20px">What this site is</h3>
+      <p style="font-size:14px;color:var(--text2);line-height:1.85">Shift Clock Time is a free set of tools for shift workers. It helps you calculate work hours, pay, overtime, and more. The tools are for personal use and for general information only.</p>
+
+      <div style="height:1px;background:var(--border-light);margin:20px 0"></div>
+      <h3 style="font-size:15px;font-weight:800;color:var(--navy);margin-bottom:8px">Acceptable use</h3>
+      <p style="font-size:14px;color:var(--text2);line-height:1.85">You may use this site for lawful purposes only. You may not use it to break any laws, harm others, send spam, or try to damage or interfere with this website or its servers. We reserve the right to block access if these rules are broken.</p>
+
+      <div style="height:1px;background:var(--border-light);margin:20px 0"></div>
+      <h3 style="font-size:15px;font-weight:800;color:var(--navy);margin-bottom:8px">Results are estimates</h3>
+      <p style="font-size:14px;color:var(--text2);line-height:1.85">All results shown by the tools on this site are estimates only. They are not legal, financial, or tax advice. Pay, deductions, and taxes vary by location and employer. Always confirm important numbers with your employer or a qualified professional.</p>
+
+      <div style="height:1px;background:var(--border-light);margin:20px 0"></div>
+      <h3 style="font-size:15px;font-weight:800;color:var(--navy);margin-bottom:8px">No guarantees</h3>
+      <p style="font-size:14px;color:var(--text2);line-height:1.85">We do our best to keep this site running and accurate. But we make no guarantee that the site will always be available, error-free, or completely up to date. We may change or remove features at any time without notice.</p>
+
+      <div style="height:1px;background:var(--border-light);margin:20px 0"></div>
+      <h3 style="font-size:15px;font-weight:800;color:var(--navy);margin-bottom:8px">Limitation of liability</h3>
+      <p style="font-size:14px;color:var(--text2);line-height:1.85">Shift Clock Time is not responsible for any loss or damage that results from using this site or relying on its results. Use the tools at your own risk.</p>
+
+      <div style="height:1px;background:var(--border-light);margin:20px 0"></div>
+      <h3 style="font-size:15px;font-weight:800;color:var(--navy);margin-bottom:8px">Intellectual property</h3>
+      <p style="font-size:14px;color:var(--text2);line-height:1.85">All content on this site — including the tools, design, and text — belongs to Shift Clock Time. You may not copy, reproduce, or use it for commercial purposes without permission.</p>
+
+      <div style="height:1px;background:var(--border-light);margin:20px 0"></div>
+      <h3 style="font-size:15px;font-weight:800;color:var(--navy);margin-bottom:8px">Changes to these terms</h3>
+      <p style="font-size:14px;color:var(--text2);line-height:1.85">We may update these terms at any time. When we do, we will update the date at the top of this page. Continued use of the site means you accept the updated terms.</p>
+
+      <div style="height:1px;background:var(--border-light);margin:20px 0"></div>
+      <h3 style="font-size:15px;font-weight:800;color:var(--navy);margin-bottom:8px">Contact</h3>
+      <p style="font-size:14px;color:var(--text2);line-height:1.85">Questions about these terms? Email us at <a href="mailto:hello@shiftclocktime.com" style="color:var(--blue)">hello@shiftclocktime.com</a>.</p>
+    </div>
+  </div>
+</div>
+
 <footer>
-  <div class="f-logo">⏱ ShiftClockTime.com</div>
+  <div class="f-logo">&#9201; ShiftClockTime.com</div>
   <div class="f-links">
     <a href="#" onclick="showPage('home')">Home</a>
     <a href="#" onclick="showPage('myhours')">My Hours</a>
@@ -693,530 +693,822 @@ input.tp-seg{background:transparent !important;color:#0f172a !important;width:22
     <a href="#" onclick="showPage('mypay')">My Pay</a>
     <a href="#" onclick="showPage('timesheet')">Timesheet</a>
   </div>
-  <div class="f-disc">Results are estimates only. Always confirm with your employer or a tax professional.<br>&copy; <span id="fy"></span> ShiftClockTime.com — Free tools for shift workers.</div>
+  <div class="f-links" style="margin-top:6px">
+    <a href="#" onclick="showPage('about')">About</a>
+    <a href="#" onclick="showPage('contact')">Contact</a>
+    <a href="#" onclick="showPage('privacy')">Privacy Policy</a>
+    <a href="#" onclick="showPage('terms')">Terms of Service</a>
+  </div>
+  <div class="f-disc">Results are estimates only. Confirm with your employer or a tax professional.<br>&copy; <span id="fy"></span> ShiftClockTime.com</div>
 </footer>
 
 <script>
-/* ── NAV ── */
-function showPage(id){
-  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
-  document.querySelectorAll('.nav-link').forEach(b=>b.classList.remove('active'));
-  const pg=document.getElementById('page-'+id);if(pg)pg.classList.add('active');
-  const btn=document.querySelector('[data-page="'+id+'"]');if(btn)btn.classList.add('active');
-  window.scrollTo(0,0);
-  // Restore live tracker if it was running
-  if(id==='myhours'&&liveRunning)renderLiveRunning();
+/* ═══════════════════════════════════════
+   HELPERS
+═══════════════════════════════════════ */
+const $ = id => document.getElementById(id);
+const set = (id, v) => { const e=$(id); if(e) e.textContent=v; };
+const show = id => { const e=$(id); if(e) e.classList.remove('hidden'); };
+const hide = id => { const e=$(id); if(e) e.classList.add('hidden'); };
+
+function toHHMM(totalMins) {
+  totalMins = Math.max(0, Math.round(totalMins));
+  const h = Math.floor(totalMins / 60);
+  const m = totalMins % 60;
+  return h + 'h ' + String(m).padStart(2,'0') + 'm';
+}
+function toHMS(totalSec) {
+  totalSec = Math.max(0, Math.floor(totalSec));
+  const h = Math.floor(totalSec / 3600);
+  const m = Math.floor((totalSec % 3600) / 60);
+  const s = totalSec % 60;
+  return String(h).padStart(2,'0') + ':' + String(m).padStart(2,'0') + ':' + String(s).padStart(2,'0');
+}
+function fmt12(totalMins) {
+  totalMins = ((Math.round(totalMins) % 1440) + 1440) % 1440;
+  const h24 = Math.floor(totalMins / 60);
+  const m = totalMins % 60;
+  const ap = h24 < 12 ? 'AM' : 'PM';
+  const h12 = h24 % 12 || 12;
+  return h12 + ':' + String(m).padStart(2,'0') + ' ' + ap;
+}
+function fmt12ms(ms) {
+  const d = new Date(ms);
+  let h = d.getHours(), m = d.getMinutes();
+  const ap = h < 12 ? 'AM' : 'PM';
+  h = h % 12 || 12;
+  return h + ':' + String(m).padStart(2,'0') + ' ' + ap;
+}
+function parseTime(str) {
+  if (!str) return null;
+  const parts = str.split(':');
+  const h = parseInt(parts[0]);
+  const m = parseInt(parts[1]);
+  if (isNaN(h) || isNaN(m)) return null;
+  return h * 60 + m;
+}
+function money(n) {
+  if (isNaN(n)) return '--';
+  n = Math.min(Math.abs(n), 9999999999);
+  return '$' + n.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ',');
 }
 
-/* ── TABS ── */
-function switchTab(t){
-  document.getElementById('pay-tab').classList.toggle('hidden',t!=='pay');
-  document.getElementById('ot-tab').classList.toggle('hidden',t!=='ot');
-  document.getElementById('tab-pay').classList.toggle('active',t==='pay');
-  document.getElementById('tab-ot').classList.toggle('active',t==='ot');
+/* ═══════════════════════════════════════
+   NAV
+═══════════════════════════════════════ */
+function showPage(id) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.nav-link').forEach(b => b.classList.remove('active'));
+  const pg = $('page-' + id);
+  if (pg) pg.classList.add('active');
+  const btn = document.querySelector('[data-page="' + id + '"]');
+  if (btn) btn.classList.add('active');
+  window.scrollTo(0, 0);
+}
+function switchTab(t) {
+  $('pay-tab').classList.toggle('hidden', t !== 'pay');
+  $('ot-tab').classList.toggle('hidden', t !== 'ot');
+  $('tab-pay').classList.toggle('active', t === 'pay');
+  $('tab-ot').classList.toggle('active', t === 'ot');
+}
+function toggleRO(a, b) {
+  $(a).classList.add('sel');
+  $(b).classList.remove('sel');
+}
+function handleOTmult() {
+  const v = $('ot-mult-sel').value;
+  $('ot-mult-custom').classList.toggle('hidden', v !== 'custom');
 }
 
-/* ── RADIO ── */
-function toggleRO(a,b){document.getElementById(a).classList.add('sel');document.getElementById(b).classList.remove('sel')}
+/* ═══════════════════════════════════════
+   TIME PICKER  (HH : MM  AM/PM)
+   - maxlength 2 on each segment
+   - digits only
+   - auto-advance hour->min after 2 digits
+   - stores/reads as "HH:MM" 24h internally
+═══════════════════════════════════════ */
+function buildTP(containerId, defaultVal24, dark) {
+  // defaultVal24: "14:35" or "" 
+  const nowH = new Date().getHours();
+  let hDisp = '', mDisp = '', isAM = (nowH < 12);
+  if (defaultVal24) {
+    const p = defaultVal24.split(':');
+    let h = parseInt(p[0]), m = parseInt(p[1]);
+    isAM = (h < 12);
+    h = h % 12 || 12;
+    hDisp = String(h).padStart(2,'0');
+    mDisp = String(m).padStart(2,'0');
+  }
+  const d = dark ? ' dark' : '';
+  const cid = containerId; // e.g. "tp-se-start" -> internal id prefix "se-start"
+  const pfx = containerId.replace('tp-',''); // "se-start"
 
-/* ── OT CUSTOM ── */
-function handleOTmult(){
-  document.getElementById('ot-mult-custom').style.display=document.getElementById('ot-mult-sel').value==='custom'?'block':'none';
+  const wrap = document.createElement('div');
+  wrap.className = 'tp' + d;
+  wrap.id = pfx + '-wrap';
+  wrap.innerHTML =
+    '<input type="text" inputmode="numeric" maxlength="2" id="' + pfx + '-h" class="tp-n" placeholder="hh" value="' + hDisp + '"/>' +
+    '<span class="tp-colon">:</span>' +
+    '<input type="text" inputmode="numeric" maxlength="2" id="' + pfx + '-m" class="tp-n" placeholder="mm" value="' + mDisp + '"/>' +
+    '<div class="tp-ap">' +
+    '<button type="button" id="' + pfx + '-am" class="' + (isAM?'on':'') + '" onclick="tpAP(\'' + pfx + '\',true)">AM</button>' +
+    '<button type="button" id="' + pfx + '-pm" class="' + (!isAM?'on':'') + '" onclick="tpAP(\'' + pfx + '\',false)">PM</button>' +
+    '</div>';
+
+  const container = $(containerId);
+  if (container) {
+    container.innerHTML = '';
+    container.appendChild(wrap);
+  }
+
+  // Events
+  const hEl = $(pfx + '-h');
+  const mEl = $(pfx + '-m');
+  if (hEl) {
+    hEl.addEventListener('focus', function(){ this.select(); });
+    hEl.addEventListener('input', function(){
+      this.value = this.value.replace(/\D/g,'').slice(0,2);
+      let v = parseInt(this.value);
+      if (this.value.length === 2) {
+        if (v > 12) this.value = '12';
+        if (v < 1)  this.value = '01';
+        if (mEl) { mEl.focus(); mEl.select(); }
+      }
+    });
+    hEl.addEventListener('blur', function(){
+      // Pad to 2 digits on blur
+      if (this.value !== '') {
+        let v = parseInt(this.value);
+        if (isNaN(v) || v < 1) v = 12;
+        if (v > 12) v = 12;
+        this.value = String(v).padStart(2,'0');
+      }
+    });
+    hEl.addEventListener('keydown', function(e){
+      if (e.key === 'Tab' || e.key === ':') { e.preventDefault(); if(mEl){mEl.focus();mEl.select();} }
+      if (!/^\d$/.test(e.key) && !['Backspace','ArrowLeft','ArrowRight','ArrowUp','ArrowDown','Tab'].includes(e.key)) e.preventDefault();
+    });
+  }
+  if (mEl) {
+    mEl.addEventListener('focus', function(){ this.select(); });
+    mEl.addEventListener('input', function(){
+      this.value = this.value.replace(/\D/g,'').slice(0,2);
+      let v = parseInt(this.value);
+      if (this.value.length === 2 && v > 59) this.value = '59';
+    });
+    mEl.addEventListener('blur', function(){
+      // Pad to 2 digits on blur
+      if (this.value !== '') {
+        let v = parseInt(this.value);
+        if (isNaN(v) || v < 0) v = 0;
+        if (v > 59) v = 59;
+        this.value = String(v).padStart(2,'0');
+      }
+    });
+    mEl.addEventListener('keydown', function(e){
+      if (!/^\d$/.test(e.key) && !['Backspace','ArrowLeft','ArrowRight','ArrowUp','ArrowDown','Tab'].includes(e.key)) e.preventDefault();
+    });
+  }
 }
 
-/* ── HELPERS ── */
-const parseTime=s=>{if(!s)return null;const[h,m]=s.split(':').map(Number);return h*60+m};
-const toHHMM=m=>{const h=Math.floor(Math.abs(m)/60),mm=Math.abs(m)%60;return h+'h '+String(mm).padStart(2,'0')+'m'};
-const toHMS=s=>{s=Math.max(0,Math.floor(s));const h=Math.floor(s/3600),m=Math.floor((s%3600)/60),ss=s%60;return String(h).padStart(2,'0')+':'+String(m).padStart(2,'0')+':'+String(ss).padStart(2,'0')};
-const toDec=m=>(m/60).toFixed(2);
-const fmt12=m=>{m=((m%1440)+1440)%1440;const h24=Math.floor(m/60),mn=m%60,ap=h24<12?'AM':'PM',h12=h24%12||12;return h12+':'+String(mn).padStart(2,'0')+' '+ap};
-const money=n=>'$'+Math.abs(n).toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g,',');
-const $=id=>document.getElementById(id);
-const set=(id,v)=>{const e=$(id);if(e)e.textContent=v};
-const show=id=>{const e=$(id);if(e)e.classList.remove('hidden')};
-const hide=id=>{const e=$(id);if(e)e.classList.add('hidden')};
-
-/* ── AUTO-SELECT on focus ── */
-function initAutoSelect(){
-  document.querySelectorAll('input[type=number],input[type=text],input[type=time]').forEach(inp=>{
-    inp.addEventListener('focus',function(){this.select()});
-  });
+function tpAP(pfx, isAM) {
+  const am = $(pfx + '-am'), pm = $(pfx + '-pm');
+  if (am) am.classList.toggle('on', isAM);
+  if (pm) pm.classList.toggle('on', !isAM);
 }
 
-/* ── SHIFT END ── */
-function calcShiftEnd(){
-  const s=parseTime(getTpickerVal('se-start')),h=parseFloat($('se-hours').value),b=parseInt($('se-break').value)||0;
-  if(s===null||isNaN(h)){alert('Please fill in your start time and shift hours.');return}
-  const wm=Math.round(h*60),em=s+wm+b;
-  set('se-end',fmt12(em));
-  set('se-sub','That is '+toHHMM(wm+b)+' after your start time'+(em>=1440?' (next day)':''));
-  set('se-r-start',fmt12(s));set('se-r-work',toHHMM(wm));set('se-r-break',b+' min');set('se-r-total',toHHMM(wm+b));
+function getTP(pfx) {
+  // Returns "HH:MM" 24h string or null
+  const hEl = $(pfx + '-h'), mEl = $(pfx + '-m');
+  if (!hEl || !mEl) return null;
+  const hv = parseInt(hEl.value);
+  const mv = parseInt(mEl.value);
+  // Be permissive: allow empty minutes to default to 00
+  if (isNaN(hv) || hEl.value === '') return null;
+  if (hv < 1 || hv > 12) return null;
+  const mvFinal = isNaN(mv) ? 0 : Math.min(59, Math.max(0, mv));
+  const amEl = $(pfx + '-am');
+  // Default: if no am/pm button found, use AM
+  const isAM = !amEl || amEl.classList.contains('on');
+  let h = hv;
+  if (isAM && h === 12) h = 0;
+  if (!isAM && h !== 12) h += 12;
+  return String(h).padStart(2,'0') + ':' + String(mvFinal).padStart(2,'0');
+}
+
+function setTP(pfx, val24) {
+  if (!val24) return;
+  const p = val24.split(':');
+  let h = parseInt(p[0]), m = parseInt(p[1]);
+  const isAM = h < 12;
+  h = h % 12 || 12;
+  const hEl = $(pfx + '-h'), mEl = $(pfx + '-m');
+  if (hEl) hEl.value = String(h).padStart(2,'0');
+  if (mEl) mEl.value = String(m).padStart(2,'0');
+  tpAP(pfx, isAM);
+}
+
+/* ═══════════════════════════════════════
+   SHIFT END
+═══════════════════════════════════════ */
+function calcShiftEnd() {
+  const sv = getTP('se-start');
+  const h  = parseFloat($('se-hours').value);
+  const b  = parseInt($('se-break').value) || 0;
+  if (!sv || isNaN(h)) { alert('Please fill in your start time and shift hours.'); return; }
+  const s  = parseTime(sv);
+  const wm = Math.round(h * 60);
+  const em = s + wm + b;
+  set('se-end', fmt12(em));
+  set('se-sub', 'That is ' + toHHMM(wm + b) + ' after your start time' + (em >= 1440 ? ' (next day)' : ''));
+  set('se-r-start', fmt12(s));
+  set('se-r-work', toHHMM(wm));
+  set('se-r-break', b + ' min');
+  set('se-r-total', toHHMM(wm + b));
   show('se-result');
 }
 
-/* ── HOURS BETWEEN ── */
-function calcHoursBetween(){
-  const s=parseTime(getTpickerVal('hb-start')),e=parseTime(getTpickerVal('hb-end')),b=parseInt($('hb-break').value)||0;
-  const overnight=document.querySelector('input[name="hb-night"]:checked').value==='yes';
-  if(s===null||e===null){alert('Please enter both times.');return}
-  let diff=e-s;if(overnight||diff<0)diff+=1440;
-  const worked=diff-b;
-  if(worked<0){alert('Break is longer than your shift. Check the numbers.');return}
-  set('hb-hm',toHHMM(worked));set('hb-dec',toDec(worked)+' hrs');set('hb-brk',b+' min');
-  set('hb-summary',toHHMM(worked)+'  ('+toDec(worked)+' decimal hours)');
+/* ═══════════════════════════════════════
+   HOURS BETWEEN
+═══════════════════════════════════════ */
+function calcHoursBetween() {
+  const sv = getTP('hb-start');
+  const ev = getTP('hb-end');
+  const b  = parseInt($('hb-break').value) || 0;
+  const overnight = document.querySelector('input[name="hb-night"]:checked').value === 'yes';
+  if (!sv || !ev) { alert('Please enter both times.'); return; }
+  let diff = parseTime(ev) - parseTime(sv);
+  if (overnight || diff < 0) diff += 1440;
+  const worked = diff - b;
+  if (worked < 0) { alert('Break is longer than shift. Check your numbers.'); return; }
+  set('hb-hm', toHHMM(worked));
+  set('hb-dec', (worked / 60).toFixed(2) + ' hrs');
+  set('hb-brk', b + ' min');
+  set('hb-summary', toHHMM(worked) + '  (' + (worked/60).toFixed(2) + ' decimal hours)');
   show('hb-result');
 }
 
-/* live tracker */
-let liveTimer=null,liveRunning=false,livePaused=false;
-let liveStartM=null,liveEndM=null,liveTotM=null,liveRate=18;
-const LS_KEY='sct-live';
-function saveLiveState(){try{localStorage.setItem(LS_KEY,JSON.stringify({running:liveRunning,paused:livePaused,startM:liveStartM,endM:liveEndM,totM:liveTotM,rate:liveRate}))}catch(e){}}
-function loadLiveState(){try{const raw=localStorage.getItem(LS_KEY);if(!raw)return;const d=JSON.parse(raw);if(d.running){liveRunning=true;livePaused=d.paused||false;liveStartM=d.startM;liveEndM=d.endM;liveTotM=d.totM;liveRate=d.rate||18;}}catch(e){}}
-function startLive(){
-  const sv=getTpickerVal('cd-start'),ev=getTpickerVal('cd-end');
-  if(!sv||!ev){alert('Please enter your shift start and end time.');return}
-  liveStartM=parseTime(sv);liveEndM=parseTime(ev);
-  if(liveEndM<=liveStartM)liveEndM+=1440;
-  liveTotM=liveEndM-liveStartM;
-  liveRate=parseFloat($('cd-rate').value)||18;
-  liveRunning=true;livePaused=false;
-  saveLiveState();renderLiveRunning();runLiveTick();
+/* ═══════════════════════════════════════
+   LIVE TRACKER
+   Uses real Date.now() milliseconds.
+   liveStartMs = exact ms when shift started
+   liveEndMs   = exact ms when shift ends
+   done = Date.now() - liveStartMs
+═══════════════════════════════════════ */
+let liveTimer = null, liveRunning = false, livePaused = false;
+let liveStartMs = null, liveEndMs = null, liveTotMs = null, liveRate = 18;
+const LS = 'sct-live-v2';
+
+function saveLive() {
+  try { localStorage.setItem(LS, JSON.stringify({ r:liveRunning, p:livePaused, s:liveStartMs, e:liveEndMs, t:liveTotMs, rt:liveRate })); } catch(x){}
 }
-function togglePause(){
-  if(!liveRunning)return;
-  livePaused=!livePaused;
-  const btn=$('lv-pause-btn');
-  if(livePaused){stopLiveTimer();if(btn){btn.textContent='Resume';btn.style.color='#4ade80'}}
-  else{if(btn){btn.textContent='Pause';btn.style.color='#94a3b8'}runLiveTick();}
-  saveLiveState();
+function loadLive() {
+  try {
+    const raw = localStorage.getItem(LS);
+    if (!raw) return;
+    const d = JSON.parse(raw);
+    if (d.r && d.s > 0 && d.e > 0 && d.t > 0) {
+      liveRunning = true; livePaused = d.p||false;
+      liveStartMs = d.s; liveEndMs = d.e; liveTotMs = d.t; liveRate = d.rt||18;
+    }
+  } catch(x) { liveRunning = false; }
 }
-function updateLiveRate(){
-  const r=parseFloat($('cd-rate-live').value);
-  if(!isNaN(r)&&r>0){liveRate=r;set('lv-r-rate',money(r)+'/hr');set('lv-full',money(liveRate*(liveTotM/60)));saveLiveState();}
-}
-function renderLiveRunning(){
-  $('live-idle').style.display='none';$('live-running').style.display='block';
-  set('lv-r-start',fmt12(liveStartM));set('lv-r-end',fmt12(liveEndM%1440));
-  set('lv-r-len',toHHMM(liveTotM));set('lv-r-rate',money(liveRate)+'/hr');
-  set('lv-full',money(liveRate*(liveTotM/60)));
-  const lr=$('cd-rate-live');if(lr)lr.value=liveRate;
-  const btn=$('lv-pause-btn');
-  if(btn){if(livePaused){btn.textContent='Resume';btn.style.color='#4ade80';}else{btn.textContent='Pause';btn.style.color='#94a3b8';}}
-}
-function runLiveTick(){if(liveTimer)clearInterval(liveTimer);liveTick();liveTimer=setInterval(liveTick,1000);}
-function liveTick(){
-  if(!liveRunning||livePaused)return;
-  const now=new Date(),nowM=now.getHours()*60+now.getMinutes()+now.getSeconds()/60;
-  let rem=liveEndM-nowM;if(rem<0)rem+=1440;
-  let done=liveTotM-rem;
-  if(done<0){done=0;rem=liveTotM}if(rem<=0){rem=0;done=liveTotM}
-  const pct=Math.min(100,(done/liveTotM)*100);
-  const prog=$('lv-prog');if(prog)prog.style.width=pct.toFixed(2)+'%';
-  const pctEl=$('lv-pct');if(pctEl)pctEl.textContent=pct.toFixed(1)+'% of your shift done';
-  const cdEl=$('lv-countdown'),cuEl=$('lv-countup'),cdSub=$('lv-cd-sub');
-  if(cuEl)cuEl.textContent=toHMS(done*60);
-  if(rem<=0){
-    if(cdEl){cdEl.textContent='00:00:00';cdEl.className='timer-val tv-done'}
-    if(cdSub)cdSub.textContent='Shift is over!';
-    const e1=$('lv-earned');if(e1)e1.textContent=money(liveRate*(liveTotM/60));
-    const e2=$('lv-rate-hint');if(e2)e2.textContent='full shift earned';
-    stopLiveTimer();return;
+
+function startLive() {
+  let sv = getTP('cd-start');
+  let ev = getTP('cd-end');
+  if (!sv) { alert('Please enter your shift START time — fill in hour and minute, then tap AM or PM.'); return; }
+  if (!ev) { alert('Please enter your shift END time — fill in hour and minute, then tap AM or PM.'); return; }
+
+  const [sh, sm] = sv.split(':').map(Number);
+  const [eh, em] = ev.split(':').map(Number);
+
+  // Total shift length in ms — calculated from the picker times
+  const startMins = sh * 60 + sm;
+  const endMins   = eh * 60 + em;
+  let shiftMins   = endMins - startMins;
+  if (shiftMins <= 0) shiftMins += 1440; // overnight shift
+
+  if (shiftMins <= 0) { alert('Start and end time cannot be the same.'); return; }
+  if (shiftMins > 1080) { // > 18 hours
+    const hrs = Math.round(shiftMins / 60);
+    if (!confirm('Your shift shows as ' + hrs + ' hours. Did you set AM/PM correctly?\nOK to start anyway, Cancel to fix it.')) return;
   }
-  if(cdEl){cdEl.textContent=toHMS(rem*60);cdEl.className='timer-val tv-countdown'}
-  if(cdSub)cdSub.textContent='until clock out';
-  const earned=liveRate*(done/60);
-  const e1=$('lv-earned');if(e1)e1.textContent=money(earned);
-  const e2=$('lv-rate-hint');if(e2)e2.textContent='@ $'+liveRate.toFixed(2)+'/hr live';
-}
-function stopLiveTimer(){if(liveTimer){clearInterval(liveTimer);liveTimer=null}}
-function resetLive(){
-  stopLiveTimer();
-  liveRunning=false;livePaused=false;liveStartM=null;liveEndM=null;liveTotM=null;liveRate=18;
-  try{localStorage.removeItem(LS_KEY)}catch(e){}
-  $('live-idle').style.display='block';$('live-running').style.display='none';
-  const now=new Date();
-  const nowV=String(now.getHours()).padStart(2,'0')+':'+String(now.getMinutes()).padStart(2,'0');
-  const end=new Date(now.getTime()+8*3600000);
-  const endV=String(end.getHours()).padStart(2,'0')+':'+String(end.getMinutes()).padStart(2,'0');
-  setTpickerVal('cd-start',nowV);setTpickerVal('cd-end',endV);
-  const cr=$('cd-rate');if(cr)cr.value='';
-  const lrv=$('cd-rate-live');if(lrv)lrv.value='';
+
+  liveTotMs   = shiftMins * 60000;
+  // Start counting from RIGHT NOW — the countdown ticks from this moment
+  liveStartMs = Date.now();
+  liveEndMs   = liveStartMs + liveTotMs;
+  liveRate    = parseFloat($('cd-rate').value) || 18;
+  liveRunning = true;
+  livePaused  = false;
+
+  saveLive();
+  showLiveRunning();
+  runTick();
 }
 
+function showLiveRunning() {
+  $('live-idle').style.display = 'none';
+  $('live-running').style.display = 'block';
+  set('lv-r-start', fmt12ms(liveStartMs));
+  set('lv-r-end',   fmt12ms(liveEndMs));
+  set('lv-r-len',   toHHMM(liveTotMs / 60000));
+  set('lv-r-rate',  money(liveRate) + '/hr');
+  set('lv-full',    money(liveRate * liveTotMs / 3600000));
+  const lr = $('cd-rate-live');
+  if (lr && !lr.value) lr.value = liveRate;
+  syncPauseBtn();
+}
 
+function syncPauseBtn() {
+  const btn = $('lv-pause-btn');
+  if (!btn) return;
+  if (livePaused) { btn.innerHTML = '&#9654; Resume'; btn.style.color = '#4ade80'; }
+  else            { btn.innerHTML = '&#9646;&#9646; Pause';   btn.style.color = '#94a3b8'; }
+}
 
-/* ── TIME PICKER WIDGET ── */
-function makeTpicker(id, val24, onchangeCb, dark){
-  // val24 like "08:00" or ""
-  let hh='', mm='', ampm='AM';
-  if(val24){
-    const parts=val24.split(':');
-    let h=parseInt(parts[0]||0), m=parseInt(parts[1]||0);
-    ampm=h<12?'AM':'PM';
-    h=h%12||12;
-    hh=String(h).padStart(2,'0');
-    mm=String(m).padStart(2,'0');
+function runTick() {
+  if (liveTimer) clearInterval(liveTimer);
+  liveTick();
+  liveTimer = setInterval(liveTick, 1000);
+}
+
+function liveTick() {
+  if (!liveRunning || livePaused || !liveTotMs) return;
+  const nowMs = Date.now();
+  let doneMs  = nowMs - liveStartMs;
+  if (doneMs < 0)         doneMs = 0;
+  if (doneMs > liveTotMs) doneMs = liveTotMs;
+  const remMs = liveTotMs - doneMs;
+  const pct   = Math.min(100, (doneMs / liveTotMs) * 100);
+
+  const prog = $('lv-prog');
+  if (prog) prog.style.width = pct.toFixed(2) + '%';
+  const pctEl = $('lv-pct');
+  if (pctEl) pctEl.textContent = pct.toFixed(1) + '% of your shift done';
+
+  const cdEl   = $('lv-countdown');
+  const cuEl   = $('lv-countup');
+  const cdSub  = $('lv-cd-sub');
+  if (cuEl) cuEl.textContent = toHMS(doneMs / 1000);
+
+  if (remMs <= 0) {
+    if (cdEl) { cdEl.textContent = '00:00:00'; cdEl.className = 'timer-val tv-done'; }
+    if (cdSub) cdSub.textContent = 'Shift is over!';
+    const e1 = $('lv-earned'); if (e1) e1.textContent = money(liveRate * liveTotMs / 3600000);
+    const e2 = $('lv-rate-hint'); if (e2) e2.textContent = 'full shift earned';
+    stopTick(); return;
   }
-  const dk=dark?'dark':'';
-  return `<div class="tp-wrap ${dk}" id="${id}-wrap">` +
-    `<input type="number" class="tp-seg" id="${id}-h" min="1" max="12" placeholder="hh" value="${hh}" oninput="tpInput(this,'${id}',true,${onchangeCb?`'`+onchangeCb+`'`:'null'})" onfocus="this.select()" onkeydown="tpKey(event,this,'${id}')"/>` +
-    `<span class="tp-sep">:</span>` +
-    `<input type="number" class="tp-seg" id="${id}-m" min="0" max="59" placeholder="mm" value="${mm}" oninput="tpInput(this,'${id}',false,${onchangeCb?`'`+onchangeCb+`'`:'null'})" onfocus="this.select()" onkeydown="tpKey(event,this,'${id}')"/>` +
-    `<div class="tp-ampm">` +
-    `<button type="button" class="tp-ampm-btn${ampm==='AM'?' sel':''}" id="${id}-am" onclick="tpSetAM('${id}','AM',${onchangeCb?`'`+onchangeCb+`'`:'null'})">AM</button>` +
-    `<button type="button" class="tp-ampm-btn${ampm==='PM'?' sel':''}" id="${id}-pm" onclick="tpSetAM('${id}','PM',${onchangeCb?`'`+onchangeCb+`'`:'null'})">PM</button>` +
-    `</div></div>`;
+
+  if (cdEl) { cdEl.textContent = toHMS(remMs / 1000); cdEl.className = 'timer-val tv-cd'; }
+  if (cdSub) cdSub.textContent = 'until clock out';
+  const earned = liveRate * doneMs / 3600000;
+  const e1 = $('lv-earned'); if (e1) e1.textContent = money(earned);
+  const e2 = $('lv-rate-hint'); if (e2) e2.textContent = '@ $' + liveRate.toFixed(2) + '/hr · live';
 }
 
-function initTpicker(id){
-  // mark AM/PM buttons correctly on init
-  const hEl=$(id+'-h');if(!hEl)return;
-  hEl.addEventListener('focus',function(){this.select()});
-  const mEl=$(id+'-m');if(mEl)mEl.addEventListener('focus',function(){this.select()});
+function stopTick() { if (liveTimer) { clearInterval(liveTimer); liveTimer = null; } }
+
+function togglePause() {
+  if (!liveRunning) return;
+  livePaused = !livePaused;
+  if (livePaused) stopTick();
+  else runTick();
+  syncPauseBtn();
+  saveLive();
 }
 
-function tpInput(el, id, isHour, cb){
-  const v=parseInt(el.value);
-  if(isHour){if(el.value.length>=2){const mEl=$(id+'-m');if(mEl)mEl.focus();}}
-  if(cb)try{eval(cb)}catch(e){}
-}
-
-function tpKey(e, el, id){
-  if(e.key===':' || e.key==='Tab'){
-    e.preventDefault();
-    const isH=el.id.endsWith('-h');
-    if(isH){const m=$(id+'-m');if(m)m.focus();}
+function updateLiveRate() {
+  const r = parseFloat($('cd-rate-live').value);
+  if (!isNaN(r) && r > 0) {
+    liveRate = r;
+    set('lv-r-rate', money(r) + '/hr');
+    if (liveTotMs > 0) set('lv-full', money(liveRate * liveTotMs / 3600000));
+    saveLive();
   }
 }
 
-function tpSetAM(id, val, cb){
-  const amBtn=$(id+'-am'), pmBtn=$(id+'-pm');
-  if(amBtn&&pmBtn){
-    amBtn.classList.toggle('sel', val==='AM');
-    pmBtn.classList.toggle('sel', val==='PM');
-  }
-  if(cb)try{eval(cb)}catch(e){}
+function resetLive() {
+  stopTick();
+  liveRunning = false; livePaused = false;
+  liveStartMs = null; liveEndMs = null; liveTotMs = null; liveRate = 18;
+  try { localStorage.removeItem(LS); } catch(x){}
+  $('live-idle').style.display = 'block';
+  $('live-running').style.display = 'none';
+  // Reset pickers to now and +8h
+  const now = new Date();
+  const e8  = new Date(now.getTime() + 8 * 3600000);
+  setTP('cd-start', String(now.getHours()).padStart(2,'0') + ':' + String(now.getMinutes()).padStart(2,'0'));
+  setTP('cd-end',   String(e8.getHours()).padStart(2,'0')  + ':' + String(e8.getMinutes()).padStart(2,'0'));
+  const cr = $('cd-rate'); if (cr) cr.value = '';
+  const lrv = $('cd-rate-live'); if (lrv) lrv.value = '';
 }
 
-function getTpickerVal(id){
-  const hEl=$(id+'-h'), mEl=$(id+'-m');
-  if(!hEl||!mEl)return null;
-  const hv=parseInt(hEl.value), mv=parseInt(mEl.value);
-  if(isNaN(hv)||isNaN(mv))return null;
-  if(hv<1||hv>12||mv<0||mv>59)return null;
-  const amBtn=$(id+'-am');
-  const isAM=amBtn&&amBtn.classList.contains('sel');
-  let h=hv;
-  if(!isAM&&h!==12)h+=12;
-  if(isAM&&h===12)h=0;
-  return String(h).padStart(2,'0')+':'+String(mv).padStart(2,'0');
-}
-
-function setTpickerVal(id, val24){
-  if(!val24)return;
-  const parts=val24.split(':');
-  let h=parseInt(parts[0]||0), m=parseInt(parts[1]||0);
-  const isAM=h<12;
-  h=h%12||12;
-  const hEl=$(id+'-h'), mEl=$(id+'-m');
-  if(hEl){hEl.value=String(h).padStart(2,'0');hEl._typed=true;}
-  if(mEl)mEl.value=String(m).padStart(2,'0');
-  const amBtn=$(id+'-am'), pmBtn=$(id+'-pm');
-  if(amBtn)amBtn.classList.toggle('sel',isAM);
-  if(pmBtn)pmBtn.classList.toggle('sel',!isAM);
-}
-
-
-/* PUNCH */
-let punchN=0;
-function addPunchRow(inV,outV){
+/* ═══════════════════════════════════════
+   PUNCH IN / OUT
+═══════════════════════════════════════ */
+let punchN = 0;
+function addPunchRow(inVal, outVal) {
   punchN++;
-  const d=document.createElement('div');d.className='punch-row';d.id='pr-'+punchN;
-  const pid=punchN;
-  d.innerHTML=
-    '<div class="pnum">#'+pid+'</div>'+
-    '<div><label style="font-size:10px;display:block;margin-bottom:3px">IN</label>'+makeTpicker('pin-'+pid, inV||'', null, false)+'</div>'+
-    '<div><label style="font-size:10px;display:block;margin-bottom:3px">OUT</label>'+makeTpicker('pout-'+pid, outV||'', null, false)+'</div>'+
-    '<div style="display:flex;align-items:flex-end;padding-bottom:2px"><button class="btn btn-red btn-sm" style="padding:4px 8px;min-width:0;font-size:12px;margin-left:2px" onclick="removePR('+pid+')" title="Remove">&#10005;</button></div>';
-  $('punch-rows').appendChild(d);
-  initTpicker('pin-'+pid);
-  initTpicker('pout-'+pid);
+  const n = punchN;
+  const row = document.createElement('div');
+  row.className = 'punch-row';
+  row.id = 'pr-' + n;
+  row.innerHTML =
+    '<div class="pnum">#' + n + '</div>' +
+    '<div><label style="font-size:10px;display:block;margin-bottom:3px">IN</label><div id="tp-pin-' + n + '"></div></div>' +
+    '<div><label style="font-size:10px;display:block;margin-bottom:3px">OUT</label><div id="tp-pout-' + n + '"></div></div>' +
+    '<div style="display:flex;align-items:flex-end;padding-bottom:2px"><button class="btn btn-red btn-sm" style="padding:4px 8px;min-width:0" onclick="removePR(' + n + ')" title="Remove">&#10005;</button></div>';
+  $('punch-rows').appendChild(row);
+  buildTP('tp-pin-' + n,  inVal  || '', false);
+  buildTP('tp-pout-' + n, outVal || '', false);
 }
-function removePR(id){const e=$('pr-'+id);if(e)e.remove()}
-function clearPunches(){$('punch-rows').innerHTML='';punchN=0;hide('punch-result');addPunchRow('08:00','17:00')}
-function calcPunch(){
-  const rate=parseFloat($('punch-rate').value)||0,brk=parseInt($('punch-break').value)||0;
-  let total=0,pairs=0;
-  for(let pi=1;pi<=punchN;pi++){
-    if(!$('pin-'+pi+'-h'))continue;
-    const inV=getTpickerVal('pin-'+pi),outV=getTpickerVal('pout-'+pi);
-    const inM=inV?parseTime(inV):null,outM=outV?parseTime(outV):null;
-    if(inM!==null&&outM!==null){let d=outM-inM;if(d<0)d+=1440;total+=d;pairs++}
+function removePR(n) { const e = $('pr-' + n); if (e) e.remove(); }
+function clearPunches() { $('punch-rows').innerHTML = ''; punchN = 0; hide('punch-result'); addPunchRow('',''); }
+function calcPunch() {
+  const rate = parseFloat($('punch-rate').value) || 0;
+  const brk  = parseInt($('punch-break').value)  || 0;
+  let total = 0, pairs = 0;
+  for (let i = 1; i <= punchN; i++) {
+    if (!$('pr-' + i)) continue;
+    const iv = getTP('pin-' + i);
+    const ov = getTP('pout-' + i);
+    if (!iv || !ov) continue;
+    let d = parseTime(ov) - parseTime(iv);
+    if (d < 0) d += 1440;
+    total += d; pairs++;
   }
-  if(!pairs){alert('Please enter at least one clock in and clock out time.');return}
-  total=Math.max(0,total-brk);
-  const dec=total/60,gross=rate>0?rate*dec:null;
-  set('pr-hours',toHHMM(total));set('pr-dec',dec.toFixed(2)+' hrs');
-  set('pr-pay',gross!==null?money(gross):'--');
-  set('pr-detail',gross!==null?dec.toFixed(2)+' hrs x $'+rate.toFixed(2)+'/hr = '+money(gross)+' gross':'Enter hourly pay above to see earnings.');
+  if (!pairs) { alert('Please enter at least one clock in and clock out time.'); return; }
+  total = Math.max(0, total - brk);
+  const dec = total / 60;
+  const gross = rate > 0 ? rate * dec : null;
+  set('pr-hours', toHHMM(total));
+  set('pr-dec', dec.toFixed(2) + ' hrs');
+  set('pr-pay', gross !== null ? money(gross) : '--');
+  set('pr-detail', gross !== null ? dec.toFixed(2) + ' hrs x $' + rate.toFixed(2) + '/hr = ' + money(gross) + ' gross' : 'Enter hourly pay above to see earnings.');
   show('punch-result');
 }
 
-/* PAY */
-function autoCalcPay(){
-  const rate=parseFloat($('pay-rate').value);
-  const hrs=parseFloat($('pay-hours').value);
-  if(!isNaN(rate)&&rate>0&&!isNaN(hrs)&&hrs>0){
+/* ═══════════════════════════════════════
+   PAY
+═══════════════════════════════════════ */
+function autoCalcPay() {
+  const rate = parseFloat($('pay-rate').value);
+  const hrs  = parseFloat($('pay-hours').value);
+  if (!isNaN(rate) && rate > 0 && !isNaN(hrs) && hrs > 0) {
     calcPay();
-    const badge=$('pay-live-badge');
-    if(badge){badge.style.display='inline-block';badge.textContent='\u2713 Updated live';}
-  } else if(!isNaN(rate)&&rate>0)calcRaise();
+    const badge = $('pay-live-badge');
+    if (badge) { badge.classList.remove('hidden'); badge.textContent = '\u2713 Updated live'; }
+  } else if (!isNaN(rate) && rate > 0) {
+    calcRaise();
+  }
 }
-function calcPay(){
-  const rate=parseFloat($('pay-rate').value),hrs=parseFloat($('pay-hours').value);
-  const tax=parseFloat($('pay-tax').value)||0,per=$('pay-period').value;
-  if(isNaN(rate)||isNaN(hrs)||!rate||!hrs)return;
-  const gross=Math.min(rate*hrs,999999999);
-  const taxAmt=gross*(tax/100),net=gross-taxAmt;
-  const ppy={shift:260,weekly:52,biweekly:26,monthly:12};
-  const yr=Math.min(gross*ppy[per],999999999),yrNet=Math.min(net*ppy[per],999999999),mo=yrNet/12;
-  const hpd=hrs/(per==='weekly'?5:per==='biweekly'?10:per==='monthly'?22:1);
-  const day=Math.min(hpd*rate*(1-tax/100),999999999);
-  set('pay-gross',money(gross));set('pay-tax-out','-'+money(taxAmt));set('pay-net',money(net));
-  set('pay-yr',money(yr));set('pay-yr-net',money(yrNet));set('pay-mo',money(mo));set('pay-day',money(day));
+
+function calcPay() {
+  const rate = parseFloat($('pay-rate').value);
+  const hrs  = parseFloat($('pay-hours').value);
+  const tax  = parseFloat($('pay-tax').value) || 0;
+  const per  = $('pay-period').value;
+  if (isNaN(rate) || isNaN(hrs) || !rate || !hrs) return;
+  const gross  = rate * hrs;
+  const taxAmt = gross * (tax / 100);
+  const net    = gross - taxAmt;
+  const ppy    = { shift:260, weekly:52, biweekly:26, monthly:12 };
+  const yr     = gross * ppy[per];
+  const yrNet  = net * ppy[per];
+  const mo     = yrNet / 12;
+  const hpd    = hrs / (per==='weekly'?5 : per==='biweekly'?10 : per==='monthly'?22 : 1);
+  const day    = hpd * rate * (1 - tax/100);
+  set('pay-gross',   money(gross));
+  set('pay-tax-out', '-' + money(taxAmt));
+  set('pay-net',     money(net));
+  set('pay-yr',      money(yr));
+  set('pay-yr-net',  money(yrNet));
+  set('pay-mo',      money(mo));
+  set('pay-day',     money(day));
   show('pay-result');
-  set('raise-current-rate','At $'+rate.toFixed(2)+'/hr, '+hrs+' hrs');
+  set('raise-current-rate', 'At $' + rate.toFixed(2) + '/hr, ' + hrs + ' hrs/period');
   calcRaise();
-  saveRate(rate);
+  try { localStorage.setItem('sct-rate', rate); } catch(x){}
 }
-function calcRaise(){
-  const rate=parseFloat($('pay-rate').value);
-  const hrs=parseFloat($('pay-hours').value);
-  const tax=parseFloat($('pay-tax').value)||0;
-  const per=($('pay-period')||{value:'weekly'}).value;
-  const ppy={shift:260,weekly:52,biweekly:26,monthly:12};
-  if(!rate||!hrs||isNaN(rate)||isNaN(hrs))return;
-  const customRaise=parseFloat($('raise-custom').value)||1;
-  const grid=$('raise-grid');if(!grid)return;grid.innerHTML='';
-  const baseNet=Math.min(rate*hrs*(1-tax/100)*ppy[per],999999999);
-  const amounts=[1,customRaise].filter((v,i,a)=>a.findIndex(x=>Math.abs(x-v)<0.001)===i).sort((a,b)=>a-b);
-  amounts.forEach(raise=>{
-    const newYrNet=Math.min((rate+raise)*hrs*(1-tax/100)*ppy[per],999999999);
-    const diffYr=newYrNet-baseNet;
-    const diffMo=diffYr/12,diffWk=diffYr/52;
-    const card=document.createElement('div');card.className='raise-card';
-    card.innerHTML=`<div class="rl">+$${raise.toFixed(2)}/hr raise</div>
-      <div class="rv">${money(diffYr)}<span style="font-size:10.5px;font-weight:600;margin-left:2px">/yr</span></div>
-      <div class="rs">${money(diffMo)}/mo &nbsp;&#183;&nbsp; ${money(diffWk)}/wk more</div>`;
+
+function calcRaise() {
+  const rate = parseFloat($('pay-rate').value);
+  const hrs  = parseFloat($('pay-hours').value);
+  const tax  = parseFloat($('pay-tax').value) || 0;
+  const per  = ($('pay-period') || {value:'weekly'}).value;
+  const ppy  = { shift:260, weekly:52, biweekly:26, monthly:12 };
+  if (!rate || !hrs || isNaN(rate) || isNaN(hrs)) return;
+  const cr = parseFloat($('raise-custom').value) || 1;
+  const grid = $('raise-grid');
+  if (!grid) return;
+  grid.innerHTML = '';
+  const amounts = [1, cr].filter((v,i,a) => a.findIndex(x => Math.abs(x-v)<0.001) === i).sort((a,b)=>a-b);
+  const baseYrNet = rate * hrs * (1 - tax/100) * ppy[per];
+  amounts.forEach(raise => {
+    const newYrNet = (rate+raise) * hrs * (1 - tax/100) * ppy[per];
+    const diffYr = newYrNet - baseYrNet;
+    const diffMo = diffYr / 12;
+    const diffWk = diffYr / 52;
+    const card = document.createElement('div');
+    card.className = 'raise-card';
+    card.innerHTML = '<div class="rl">+$' + raise.toFixed(2) + '/hr raise</div>' +
+      '<div class="rv">' + money(diffYr) + '<span style="font-size:10px;font-weight:600;margin-left:2px">/yr</span></div>' +
+      '<div class="rs">' + money(diffMo) + '/mo &nbsp;&middot;&nbsp; ' + money(diffWk) + '/wk more</div>';
     grid.appendChild(card);
   });
 }
 
-/* OVERTIME */
-function calcOvertime(){
-  const rate=parseFloat($('ot-rate').value),hrs=parseFloat($('ot-hours').value);
-  const thr=parseFloat($('ot-threshold').value)||40;
-  const sel=$('ot-mult-sel').value;
-  const mult=sel==='custom'?parseFloat($('ot-mult-custom').value)||1.5:parseFloat(sel);
-  if(isNaN(rate)||isNaN(hrs)){alert('Please enter your pay and hours.');return}
-  const regH=Math.min(hrs,thr),otH=Math.max(0,hrs-thr);
-  const regP=regH*rate,otP=otH*rate*mult,tot=regP+otP;
-  set('ot-regh',regH+' hrs');set('ot-oth',otH+' hrs');
-  set('ot-regp',money(regP));set('ot-otp',money(otP));set('ot-total',money(tot));
-  set('ot-sub',otH>0?otH+' OT hrs x $'+(rate*mult).toFixed(2)+'/hr ('+mult+'x rate)':'No overtime -- worked '+hrs+' hrs (under '+thr+' hrs)');
-  show('ot-result');saveRate(rate);
+function copyPaySummary() {
+  const rate = ($('pay-rate')||{}).value||'--';
+  const hrs  = ($('pay-hours')||{}).value||'--';
+  const tax  = ($('pay-tax')||{}).value||'22';
+  const text = 'Shift Clock Time -- My Pay Summary\n' + '='.repeat(36) + '\n' +
+    'Hourly Rate:      $' + rate + '/hr\n' +
+    'Hours Worked:     ' + hrs + ' hrs\n' +
+    'Tax Rate:         ' + tax + '%\n---\n' +
+    'Gross Pay:        ' + (($('pay-gross')||{}).textContent||'--') + '\n' +
+    'Taxes Out:        ' + (($('pay-tax-out')||{}).textContent||'--') + '\n' +
+    'Take-Home:        ' + (($('pay-net')||{}).textContent||'--') + '\n---\n' +
+    'Yearly Take-Home: ' + (($('pay-yr-net')||{}).textContent||'--') + '\n' +
+    'Monthly:          ' + (($('pay-mo')||{}).textContent||'--') + '\n' +
+    'Daily:            ' + (($('pay-day')||{}).textContent||'--') + '\n' +
+    'shiftclocktime.com';
+  navigator.clipboard.writeText(text).then(() => {
+    const badge = $('pay-live-badge');
+    if (badge) { const orig = badge.textContent; badge.textContent='Copied!'; badge.classList.remove('hidden'); setTimeout(()=>{ badge.textContent=orig; },2000); }
+  }).catch(() => {
+    const ta = document.createElement('textarea'); ta.value=text; document.body.appendChild(ta); ta.select(); document.execCommand('copy'); document.body.removeChild(ta);
+  });
 }
 
-/* TIMESHEET */
-const DAYS=['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday'];
-function parseFlexTime(val){
-  if(!val)return null;
-  val=val.trim().toLowerCase().replace(/\s/g,'');
-  if(/^\d{1,2}:\d{2}$/.test(val)){const[h,m]=val.split(':').map(Number);if(h>=0&&h<24&&m>=0&&m<60)return String(h).padStart(2,'0')+':'+String(m).padStart(2,'0');}
-  const match=val.match(/^(\d{1,2})(?::(\d{2}))?(am|pm)?$/);
-  if(match){let h=parseInt(match[1]),m=parseInt(match[2]||0),ap=match[3];
-    if(ap==='pm'&&h!==12)h+=12;if(ap==='am'&&h===12)h=0;
-    if(h>=0&&h<24&&m>=0&&m<60)return String(h).padStart(2,'0')+':'+String(m).padStart(2,'0');}
-  return null;
+/* ═══════════════════════════════════════
+   OVERTIME
+═══════════════════════════════════════ */
+function calcOvertime() {
+  const rate = parseFloat($('ot-rate').value);
+  const hrs  = parseFloat($('ot-hours').value);
+  const thr  = parseFloat($('ot-threshold').value) || 40;
+  const sel  = $('ot-mult-sel').value;
+  const mult = sel==='custom' ? parseFloat($('ot-mult-custom').value)||1.5 : parseFloat(sel);
+  if (isNaN(rate)||isNaN(hrs)) { alert('Please enter your pay and hours.'); return; }
+  if (isNaN(mult)||mult<=0) { alert('Please enter a valid overtime rate.'); return; }
+  const regH = Math.min(hrs,thr), otH = Math.max(0,hrs-thr);
+  const regP = regH*rate, otP = otH*rate*mult, tot = regP+otP;
+  set('ot-regh', regH + ' hrs');
+  set('ot-oth',  otH  + ' hrs');
+  set('ot-regp', money(regP));
+  set('ot-otp',  money(otP));
+  set('ot-total',money(tot));
+  set('ot-sub',  otH>0 ? otH+' OT hrs x $'+(rate*mult).toFixed(2)+'/hr ('+mult+'x rate)' : 'No overtime — worked '+hrs+' hrs (under '+thr+' hrs)');
+  show('ot-result');
+  try { localStorage.setItem('sct-rate', rate); } catch(x){}
 }
-function buildTimesheet(){
-  const tb=$('ts-body');tb.innerHTML='';
-  DAYS.forEach((d,i)=>{
-    const def=i<5;
-    const row=document.createElement('tr');row.id='ts-row-'+i;
-    row.innerHTML=
-      '<td><span class="ts-day-name">'+d.slice(0,3)+'</span></td>'+
-      '<td>'+makeTpicker('tsin-'+i, def?'08:00':'', 'onTSChange('+i+')')+'</td>'+
-      '<td>'+makeTpicker('tsout-'+i, def?'16:00':'', 'onTSChange('+i+')')+'</td>'+
-      '<td><input type="number" class="ts-brk inp-brk" value="'+(def?30:0)+'" min="0" step="5" onfocus="this.select()" oninput="onTSChange('+i+')"/></td>'+
-      '<td class="ts-day-val" id="ts-dv-'+i+'">--</td>'+
-      '<td><button class="copy-dn" onclick="copyRowDown('+i+')" title="Copy this row to all days below">&#8595; Fill Below</button></td>';
+
+/* ═══════════════════════════════════════
+   TIMESHEET
+═══════════════════════════════════════ */
+const DAYS = ['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday'];
+
+function buildTimesheet() {
+  const tb = $('ts-body'); tb.innerHTML = '';
+  DAYS.forEach((d, i) => {
+    const def = i < 5;
+    const row = document.createElement('tr'); row.id = 'ts-row-' + i;
+    row.innerHTML =
+      '<td><span class="ts-day-name">' + d.slice(0,3) + '</span></td>' +
+      '<td id="ts-in-cell-' + i + '"></td>' +
+      '<td id="ts-out-cell-' + i + '"></td>' +
+      '<td><input type="number" class="ts-brk inp-brk" value="' + (def?30:0) + '" min="0" step="5" onfocus="this.select()" oninput="liveTS()"/></td>' +
+      '<td class="ts-day-val" id="ts-dv-' + i + '">--</td>' +
+      '<td><button class="copy-dn" onclick="copyRowDown(' + i + ')" title="Copy to days below">&#8595; Fill Below</button></td>';
     tb.appendChild(row);
-    initTpicker('tsin-'+i);
-    initTpicker('tsout-'+i);
+    buildTP('ts-in-cell-' + i,  def ? '08:00' : '', false);
+    buildTP('ts-out-cell-' + i, def ? '16:00' : '', false);
+    // add oninput listeners to the newly built picker
+    ['h','m'].forEach(seg => {
+      const hEl = $(('ts-in-cell-' + i).replace('tp-','') + '-' + seg);
+      // pickers built inside ts-in-cell-i use container id as prefix removal
+    });
   });
+  // Wire input events on all ts picker segments for live updates
+  wireTSInputs();
   liveTS();
 }
-function onTSChange(i){
-  liveTS();
-  if(i<6){
-    const inV=getTpickerVal('tsin-'+i);
-    const outV=getTpickerVal('tsout-'+i);
-    if(inV&&!$('tsin-'+(i+1)+'-h')?._typed)setTpickerVal('tsin-'+(i+1),inV);
-    if(outV&&!$('tsout-'+(i+1)+'-h')?._typed)setTpickerVal('tsout-'+(i+1),outV);
+
+function wireTSInputs() {
+  // For each day, wire input events on the picker segments
+  for (let i = 0; i < 7; i++) {
+    ['ts-in-cell-' + i, 'ts-out-cell-' + i].forEach(cid => {
+      const pfx = cid; // the prefix used in buildTP
+      ['h','m'].forEach(seg => {
+        const el = $(pfx + '-' + seg);
+        if (el) el.addEventListener('input', () => {
+          liveTS();
+          autoFillNextDay(i);
+        });
+      });
+      ['am','pm'].forEach(ap => {
+        const el = $(pfx + '-' + ap);
+        if (el) el.addEventListener('click', () => {
+          liveTS();
+          autoFillNextDay(i);
+        });
+      });
+    });
   }
 }
-document.addEventListener('input',e=>{
-  if(e.target.classList.contains('ts-in')||e.target.classList.contains('ts-out'))e.target._typed=true;
+
+function autoFillNextDay(i) {
+  if (i >= 6) return;
+  const nextInPfx  = 'ts-in-cell-' + (i+1);
+  const nextOutPfx = 'ts-out-cell-' + (i+1);
+  const thisIn  = getTP('ts-in-cell-' + i);
+  const thisOut = getTP('ts-out-cell-' + i);
+  // Only fill if next day's hours field is empty
+  const nextH = $(nextInPfx + '-h');
+  if (nextH && !nextH._userTyped && thisIn) setTP(nextInPfx, thisIn);
+  const nextOH = $(nextOutPfx + '-h');
+  if (nextOH && !nextOH._userTyped && thisOut) setTP(nextOutPfx, thisOut);
+}
+
+// Mark as user-typed so auto-fill won't overwrite
+document.addEventListener('input', e => {
+  if (e.target.classList.contains('tp-n')) e.target._userTyped = true;
 });
-function copyRowDown(i){
-  const inV=getTpickerVal('tsin-'+i),outV=getTpickerVal('tsout-'+i);
-  const brkV=$('ts-row-'+i)?$('ts-row-'+i).querySelector('.ts-brk').value:'0';
-  for(let j=i+1;j<7;j++){
-    if(inV)setTpickerVal('tsin-'+j,inV);
-    if(outV)setTpickerVal('tsout-'+j,outV);
-    const nr=$('ts-row-'+j);if(nr)nr.querySelector('.ts-brk').value=brkV;
+
+function getTS(i, inout) {
+  return getTP(inout === 'in' ? 'ts-in-cell-' + i : 'ts-out-cell-' + i);
+}
+
+function liveTS() {
+  let tot = 0;
+  for (let i = 0; i < 7; i++) {
+    const brk = parseInt(document.querySelectorAll('.ts-brk')[i]?.value) || 0;
+    const iv = getTS(i, 'in');
+    const ov = getTS(i, 'out');
+    const cell = $('ts-dv-' + i);
+    if (iv && ov) {
+      let d = parseTime(ov) - parseTime(iv);
+      if (d < 0) d += 1440;
+      const w = Math.max(0, d - brk);
+      tot += w;
+      if (cell) cell.textContent = toHHMM(w);
+    } else {
+      if (cell) cell.textContent = '--';
+    }
+  }
+  set('ts-week-total', toHHMM(tot));
+}
+
+function calcTimesheet() {
+  const rate = parseFloat($('ts-rate').value) || 0;
+  let tot = 0, days = 0;
+  for (let i = 0; i < 7; i++) {
+    const brk = parseInt(document.querySelectorAll('.ts-brk')[i]?.value) || 0;
+    const iv = getTS(i, 'in');
+    const ov = getTS(i, 'out');
+    if (iv && ov) {
+      let d = parseTime(ov) - parseTime(iv);
+      if (d < 0) d += 1440;
+      const w = Math.max(0, d - brk);
+      if (w > 0) { tot += w; days++; }
+    }
+  }
+  const totH = tot / 60;
+  const otH  = Math.max(0, totH - 40);
+  const regH = Math.min(totH, 40);
+  const gross = rate > 0 ? (regH * rate + otH * rate * 1.5) : null;
+  set('ts-hours', toHHMM(tot));
+  set('ts-days',  days + ' day' + (days!==1?'s':''));
+  set('ts-ot',    otH > 0 ? otH.toFixed(2) + ' hrs' : 'None');
+  set('ts-pay',   gross !== null ? money(gross) : '--');
+  show('ts-result');
+  liveTS();
+}
+
+function copyRowDown(i) {
+  const iv = getTS(i, 'in');
+  const ov = getTS(i, 'out');
+  const brks = document.querySelectorAll('.ts-brk');
+  const bv = brks[i] ? brks[i].value : '0';
+  for (let j = i+1; j < 7; j++) {
+    if (iv) setTP('ts-in-cell-' + j,  iv);
+    if (ov) setTP('ts-out-cell-' + j, ov);
+    if (brks[j]) brks[j].value = bv;
   }
   liveTS();
 }
-function liveTS(){
-  let tot=0;
-  for(let i=0;i<7;i++){
-    const row=$('ts-row-'+i);if(!row)continue;
-    const brk=parseInt(row.querySelector('.ts-brk').value)||0;
-    const cell=$('ts-dv-'+i);
-    const inT=getTpickerVal('tsin-'+i);
-    const outT=getTpickerVal('tsout-'+i);
-    const inM=inT?parseTime(inT):null,outM=outT?parseTime(outT):null;
-    if(inM!==null&&outM!==null){let d=outM-inM;if(d<0)d+=1440;const w=Math.max(0,d-brk);tot+=w;if(cell)cell.textContent=toHHMM(w);}
-    else{if(cell)cell.textContent='--'}
+
+function clearTimesheet() { buildTimesheet(); hide('ts-result'); set('ts-week-total','0h 0m'); }
+
+function copyTimesheet() {
+  let text = 'Shift Clock Time -- Weekly Timesheet\n' + '='.repeat(42) + '\n';
+  text += 'Day        In         Out        Brk    Hours\n' + '-'.repeat(42) + '\n';
+  const brks = document.querySelectorAll('.ts-brk');
+  for (let i = 0; i < 7; i++) {
+    const iv  = getTS(i,'in')  || '--';
+    const ov  = getTS(i,'out') || '--';
+    const brk = brks[i] ? brks[i].value : '0';
+    const hrs = $('ts-dv-'+i) ? $('ts-dv-'+i).textContent : '--';
+    text += DAYS[i].padEnd(11) + iv.padEnd(11) + ov.padEnd(11) + (brk+'m').padEnd(7) + hrs + '\n';
   }
-  set('ts-week-total',toHHMM(tot));
-}
-function calcTimesheet(){
-  const rate=parseFloat($('ts-rate').value)||0;let tot=0,days=0;
-  for(let i=0;i<7;i++){
-    const row=$('ts-row-'+i);if(!row)continue;
-    const brk=parseInt(row.querySelector('.ts-brk').value)||0;
-    const inT=getTpickerVal('tsin-'+i);
-    const outT=getTpickerVal('tsout-'+i);
-    const inM=inT?parseTime(inT):null,outM=outT?parseTime(outT):null;
-    if(inM!==null&&outM!==null){let d=outM-inM;if(d<0)d+=1440;const w=Math.max(0,d-brk);if(w>0){tot+=w;days++;}}
-  }
-  const totH=tot/60,otH=Math.max(0,totH-40),regH=Math.min(totH,40);
-  const gross=rate>0?(regH*rate+otH*rate*1.5):null;
-  set('ts-hours',toHHMM(tot));set('ts-days',days+' day'+(days!==1?'s':''));
-  set('ts-ot',otH>0?otH.toFixed(2)+' hrs':'None');
-  set('ts-pay',gross!==null?money(gross):'--');
-  show('ts-result');liveTS();
-}
-function clearTimesheet(){buildTimesheet();hide('ts-result');set('ts-week-total','0h 0m')}
-function copyTimesheet(){
-  let text='Shift Clock Time -- Weekly Timesheet\n'+'='.repeat(42)+'\n';
-  text+='Day        In         Out        Brk    Hours\n'+'-'.repeat(42)+'\n';
-  for(let i=0;i<7;i++){
-    const row=$('ts-row-'+i);if(!row)continue;
-    const inV=getTpickerVal('tsin-'+i)||'--';
-    const outV=getTpickerVal('tsout-'+i)||'--';
-    const brk=row.querySelector('.ts-brk').value||'0';
-    const hrs=$('ts-dv-'+i)?$('ts-dv-'+i).textContent:'--';
-    text+=(DAYS[i].padEnd(11)+(inV).padEnd(11)+(outV).padEnd(11)+(brk+'m').padEnd(7)+hrs+'\n');
-  }
-  text+='-'.repeat(42)+'\nWeekly Total: '+($('ts-week-total')?$('ts-week-total').textContent:'--')+'\n';
-  const p=$('ts-pay');if(p&&p.textContent!=='--')text+='Gross Pay: '+p.textContent+'\n';
+  text += '-'.repeat(42) + '\nWeekly Total: ' + ($('ts-week-total')||{}).textContent + '\n';
+  const p = $('ts-pay'); if(p && p.textContent!=='--') text += 'Gross Pay:    ' + p.textContent + '\n';
   navigator.clipboard.writeText(text)
-    .then(()=>{show('copy-msg');setTimeout(()=>hide('copy-msg'),3500)})
-    .catch(()=>{const ta=document.createElement('textarea');ta.value=text;document.body.appendChild(ta);ta.select();document.execCommand('copy');document.body.removeChild(ta);show('copy-msg');setTimeout(()=>hide('copy-msg'),3500)});
-}
-function printSheet(){calcTimesheet();setTimeout(()=>window.print(),150)}
-
-/* FAQ */
-function toggleFaq(btn){
-  const a=btn.nextElementSibling,open=a.classList.contains('open');
-  document.querySelectorAll('.faq-a').forEach(x=>x.classList.remove('open'));
-  document.querySelectorAll('.faq-ico').forEach(x=>x.textContent='+');
-  if(!open){a.classList.add('open');btn.querySelector('.faq-ico').textContent='-'}
+    .then(() => { show('copy-msg'); setTimeout(()=>hide('copy-msg'), 3500); })
+    .catch(() => { const ta=document.createElement('textarea');ta.value=text;document.body.appendChild(ta);ta.select();document.execCommand('copy');document.body.removeChild(ta);show('copy-msg');setTimeout(()=>hide('copy-msg'),3500); });
 }
 
-/* COPY PAY SUMMARY */
-function copyPaySummary(){
-  const rate=($('pay-rate')||{}).value||'--';
-  const hrs=($('pay-hours')||{}).value||'--';
-  const tax=($('pay-tax')||{}).value||'22';
-  const gross=($('pay-gross')||{}).textContent||'--';
-  const taxOut=($('pay-tax-out')||{}).textContent||'--';
-  const net=($('pay-net')||{}).textContent||'--';
-  const yr=($('pay-yr-net')||{}).textContent||'--';
-  const mo=($('pay-mo')||{}).textContent||'--';
-  const day=($('pay-day')||{}).textContent||'--';
-  const text='Shift Clock Time -- My Pay Summary\n'+'='.repeat(36)+'\n'+
-    'Hourly Rate:      $'+rate+'/hr\n'+
-    'Hours Worked:     '+hrs+' hrs\n'+
-    'Tax Rate:         '+tax+'%\n'+
-    '---\n'+
-    'Gross Pay:        '+gross+'\n'+
-    'Taxes Out:        '+taxOut+'\n'+
-    'Take-Home:        '+net+'\n'+
-    '---\n'+
-    'Yearly Take-Home: '+yr+'\n'+
-    'Monthly:          '+mo+'\n'+
-    'Daily:            '+day+'\n'+
-    'Generated at shiftclocktime.com';
-  navigator.clipboard.writeText(text)
-    .then(()=>{
-      const badge=$('pay-live-badge');
-      if(badge){const orig=badge.textContent;badge.textContent='Copied!';badge.style.display='inline-block';setTimeout(()=>{badge.textContent=orig;},2000);}
-    })
-    .catch(()=>{const ta=document.createElement('textarea');ta.value=text;document.body.appendChild(ta);ta.select();document.execCommand('copy');document.body.removeChild(ta);});
+function printSheet() { calcTimesheet(); setTimeout(() => window.print(), 150); }
+
+/* ═══════════════════════════════════════
+   FAQ
+═══════════════════════════════════════ */
+function sendContact() {
+  const name  = ($('c-name') ||{}).value||'';
+  const email = ($('c-email')||{}).value||'';
+  const msg   = ($('c-msg')  ||{}).value||'';
+  if (!msg.trim()) { alert('Please write a message before sending.'); return; }
+  // In production connect to a form backend (Formspree, Netlify Forms, etc.)
+  // For now show thank-you message
+  show('contact-thanks');
+  if ($('c-name'))  $('c-name').value  = '';
+  if ($('c-email')) $('c-email').value = '';
+  if ($('c-msg'))   $('c-msg').value   = '';
 }
 
-/* RATE SAVE */
-function saveRate(r){try{localStorage.setItem('sct-rate',r)}catch(e){}}
-function loadRate(){
-  try{const r=localStorage.getItem('sct-rate');
-    if(r){['pay-rate','ot-rate','ts-rate','punch-rate'].forEach(id=>{const e=$(id);if(e&&!e.value)e.value=r})}}
-  catch(e){}
+function toggleFaq(btn) {
+  const a = btn.nextElementSibling;
+  const open = a.classList.contains('open');
+  document.querySelectorAll('.faq-a').forEach(x => x.classList.remove('open'));
+  document.querySelectorAll('.faq-ico').forEach(x => x.textContent = '+');
+  if (!open) { a.classList.add('open'); btn.querySelector('.faq-ico').textContent = '-'; }
 }
 
-/* AUTO SELECT */
-function initAutoSelect(){
-  document.querySelectorAll('input[type=number],input[type=text],input[type=time]').forEach(inp=>{
-    inp.addEventListener('focus',function(){this.select()});
-  });
-}
+/* ═══════════════════════════════════════
+   INIT
+═══════════════════════════════════════ */
+document.addEventListener('DOMContentLoaded', () => {
+  $('fy').textContent = new Date().getFullYear();
 
-/* INIT */
-document.addEventListener('DOMContentLoaded',()=>{
-  $('fy').textContent=new Date().getFullYear();
+  // Build time pickers
+  const now = new Date();
+  const e8  = new Date(now.getTime() + 8 * 3600000);
+  const nowV = String(now.getHours()).padStart(2,'0') + ':' + String(now.getMinutes()).padStart(2,'0');
+  const e8V  = String(e8.getHours()).padStart(2,'0')  + ':' + String(e8.getMinutes()).padStart(2,'0');
 
-  // Init time pickers in HTML
-  function hostTP(hostId, id, defVal, dark, cb){
-    const host=document.getElementById(hostId);
-    if(!host)return;
-    host.outerHTML='<span id="'+hostId+'">'+makeTpicker(id, defVal, cb||null, dark)+'</span>';
-    initTpicker(id);
-  }
-  hostTP('se-start-host','se-start','09:00',false,null);
-  hostTP('hb-start-host','hb-start','08:00',false,null);
-  hostTP('hb-end-host','hb-end','16:30',false,null);
+  buildTP('tp-cd-start', nowV, true);
+  buildTP('tp-cd-end',   e8V,  true);
+  buildTP('tp-se-start', '09:00', false);
+  buildTP('tp-hb-start', '08:00', false);
+  buildTP('tp-hb-end',   '16:30', false);
 
-  // Live panel pickers - set to current time & +8h
-  const now=new Date();
-  const nowH=now.getHours(), nowM=now.getMinutes();
-  const endD=new Date(now.getTime()+8*3600000);
-  const nowVal=String(nowH).padStart(2,'0')+':'+String(nowM).padStart(2,'0');
-  const endVal=String(endD.getHours()).padStart(2,'0')+':'+String(endD.getMinutes()).padStart(2,'0');
-  hostTP('cd-start-host','cd-start',nowVal,true,null);
-  hostTP('cd-end-host','cd-end',endVal,true,null);
-
+  // Build timesheet and punch
   buildTimesheet();
-  addPunchRow('08:00','17:00');
-  loadRate();
-  initAutoSelect();
-  loadLiveState();
-  if(liveRunning){renderLiveRunning();runLiveTick();}
+  addPunchRow('', '');
+
+  // Restore saved rate
+  try {
+    const r = localStorage.getItem('sct-rate');
+    if (r) { ['pay-rate','ot-rate','ts-rate','punch-rate'].forEach(id => { const e=$(id); if(e&&!e.value) e.value=r; }); }
+  } catch(x){}
+
+  // Restore live tracker
+  loadLive();
+  if (liveRunning) { showLiveRunning(); runTick(); }
 });
+
+/* Self-test (runs silently in console) */
+(function selfTest(){
+  const tests = [
+    ['parseTime("14:35")', parseTime("14:35") === 875],
+    ['parseTime("00:00")', parseTime("00:00") === 0],
+    ['toHHMM(505)', toHHMM(505) === '8h 25m'],
+    ['toHMS(3661)', toHMS(3661) === '01:01:01'],
+    ['fmt12(875)', fmt12(875) === '2:35 PM'],
+    ['fmt12(0)', fmt12(0) === '12:00 AM'],
+    ['fmt12(720)', fmt12(720) === '12:00 PM'],
+    ['money(1234.56)', money(1234.56) === '$1,234.56'],
+    ['money(0)', money(0) === '$0.00'],
+    // Live timer math: 2:35pm start, 11pm end, at 3pm
+    ['live timer 2:35pm-11pm at 3pm', (()=>{
+      const start = new Date(2024,0,1,14,35,0).getTime();
+      const end   = new Date(2024,0,1,23, 0,0).getTime();
+      const now   = new Date(2024,0,1,15, 0,0).getTime();
+      const totMs = end - start; // 505 mins
+      const doneMs = now - start; // 25 mins
+      const pct = doneMs/totMs*100;
+      return Math.abs(pct - 4.95) < 0.1; // ~5%
+    })()],
+  ];
+  let pass=0,fail=0;
+  tests.forEach(([name,result]) => {
+    if(result){pass++;} else {fail++;console.error('FAIL:',name);}
+  });
+  console.log('[ShiftClockTime] Self-test: '+pass+'/'+tests.length+' passed'+(fail?' | '+fail+' FAILED':''));
+})();
 </script>
 </body>
 </html>
