@@ -273,6 +273,8 @@ footer{background:var(--navy);color:#64748b;text-align:center;padding:26px 18px;
       <button class="nav-link" data-page="myshift" onclick="showPage('myshift')">&#9200; My Shift</button>
       <button class="nav-link" data-page="mypay" onclick="showPage('mypay')">&#128181; My Pay</button>
       <button class="nav-link" data-page="timesheet" onclick="showPage('timesheet')">&#128203; Timesheet</button>
+      <button class="nav-link" data-page="about" onclick="showPage('about')">About</button>
+      <button class="nav-link" data-page="contact" onclick="showPage('contact')">Contact</button>
     </div>
   </div>
 </nav>
@@ -586,13 +588,8 @@ footer{background:var(--navy);color:#64748b;text-align:center;padding:26px 18px;
     <div class="page-head"><div class="ph-icon" style="font-size:18px">@</div><div><h1>Contact</h1><p>Questions, feedback, or something broken? Let us know.</p></div></div>
     <div class="card">
       <p style="font-size:14px;color:var(--text2);line-height:1.85;margin-bottom:20px">We read every message. If something is not working, or you have an idea that would help shift workers, we want to hear it.</p>
-      <div style="height:1px;background:var(--border-light);margin:0 0 20px 0"></div>
-      <h3 style="font-size:14px;font-weight:800;color:var(--navy);margin-bottom:6px">Email us directly</h3>
-      <p style="font-size:14px;color:var(--text2);margin-bottom:20px">Send your message to: <a href="mailto:hello@shiftclocktime.com" style="color:var(--blue);font-weight:600">hello@shiftclocktime.com</a></p>
-      <div style="height:1px;background:var(--border-light);margin:0 0 20px 0"></div>
-      <h3 style="font-size:14px;font-weight:800;color:var(--navy);margin-bottom:14px">Or send a message below</h3>
       <div class="field"><label>Your name</label><input type="text" id="c-name" placeholder="Your name" onfocus="this.select()"/></div>
-      <div class="field"><label>Your email</label><input type="text" id="c-email" placeholder="your@email.com" onfocus="this.select()"/></div>
+      <div class="field"><label>Your email <span class="lh">(so we can reply)</span></label><input type="text" id="c-email" placeholder="your@email.com" onfocus="this.select()"/></div>
       <div class="field"><label>Message</label><textarea id="c-msg" rows="5" placeholder="Tell us what is on your mind..." style="width:100%;padding:9px 11px;border:2px solid var(--border-light);border-radius:7px;font-family:'Inter',sans-serif;font-size:14px;color:var(--text);background:#fff;outline:none;resize:vertical;transition:border-color .15s" onfocus="this.style.borderColor='var(--navy)'" onblur="this.style.borderColor='var(--border-light)'"></textarea></div>
       <button class="btn btn-navy" onclick="sendContact()">Send Message</button>
       <div id="contact-thanks" class="info-box hidden" style="margin-top:10px">Thank you. We will get back to you soon.</div>
@@ -630,7 +627,7 @@ footer{background:var(--navy);color:#64748b;text-align:center;padding:26px 18px;
 
       <div style="height:1px;background:var(--border-light);margin:20px 0"></div>
       <h3 style="font-size:15px;font-weight:800;color:var(--navy);margin-bottom:8px">Your rights</h3>
-      <p style="font-size:14px;color:var(--text2);line-height:1.85">You can clear your browser's localStorage and cookies at any time to remove any data this site has stored on your device. If you have questions about your data, contact us at <a href="mailto:hello@shiftclocktime.com" style="color:var(--blue)">hello@shiftclocktime.com</a>.</p>
+      <p style="font-size:14px;color:var(--text2);line-height:1.85">You can clear your browser's localStorage and cookies at any time to remove any data this site has stored on your device. If you have questions about your data, contact us at <a href="#" onclick="showPage('contact')" style="color:var(--blue)">the contact form on this site</a>.</p>
 
       <div style="height:1px;background:var(--border-light);margin:20px 0"></div>
       <h3 style="font-size:15px;font-weight:800;color:var(--navy);margin-bottom:8px">Changes to this policy</h3>
@@ -638,7 +635,7 @@ footer{background:var(--navy);color:#64748b;text-align:center;padding:26px 18px;
 
       <div style="height:1px;background:var(--border-light);margin:20px 0"></div>
       <h3 style="font-size:15px;font-weight:800;color:var(--navy);margin-bottom:8px">Contact</h3>
-      <p style="font-size:14px;color:var(--text2);line-height:1.85">Questions about this policy? Email us at <a href="mailto:hello@shiftclocktime.com" style="color:var(--blue)">hello@shiftclocktime.com</a>.</p>
+      <p style="font-size:14px;color:var(--text2);line-height:1.85">Questions about this policy? Email us at <a href="#" onclick="showPage('contact')" style="color:var(--blue)">the contact form on this site</a>.</p>
     </div>
   </div>
 </div>
@@ -679,7 +676,7 @@ footer{background:var(--navy);color:#64748b;text-align:center;padding:26px 18px;
 
       <div style="height:1px;background:var(--border-light);margin:20px 0"></div>
       <h3 style="font-size:15px;font-weight:800;color:var(--navy);margin-bottom:8px">Contact</h3>
-      <p style="font-size:14px;color:var(--text2);line-height:1.85">Questions about these terms? Email us at <a href="mailto:hello@shiftclocktime.com" style="color:var(--blue)">hello@shiftclocktime.com</a>.</p>
+      <p style="font-size:14px;color:var(--text2);line-height:1.85">Questions about these terms? Email us at <a href="#" onclick="showPage('contact')" style="color:var(--blue)">the contact form on this site</a>.</p>
     </div>
   </div>
 </div>
@@ -692,6 +689,10 @@ footer{background:var(--navy);color:#64748b;text-align:center;padding:26px 18px;
     <a href="#" onclick="showPage('myshift')">My Shift</a>
     <a href="#" onclick="showPage('mypay')">My Pay</a>
     <a href="#" onclick="showPage('timesheet')">Timesheet</a>
+    <a href="#" onclick="showPage('about')">About</a>
+    <a href="#" onclick="showPage('contact')">Contact</a>
+    <a href="#" onclick="showPage('privacy')">Privacy Policy</a>
+    <a href="#" onclick="showPage('terms')">Terms of Service</a>
   </div>
   <div class="f-links" style="margin-top:6px">
     <a href="#" onclick="showPage('about')">About</a>
@@ -1424,6 +1425,28 @@ function copyTimesheet() {
 function printSheet() { calcTimesheet(); setTimeout(() => window.print(), 150); }
 
 /* ═══════════════════════════════════════
+   CONTACT FORM
+═══════════════════════════════════════ */
+function submitContact() {
+  const name  = ($('contact-name')  || {}).value || '';
+  const email = ($('contact-email') || {}).value || '';
+  const msg   = ($('contact-msg')   || {}).value || '';
+  if (!name.trim() || !email.trim() || !msg.trim()) {
+    alert('Please fill in all fields before sending.');
+    return;
+  }
+  if (!email.includes('@')) {
+    alert('Please enter a valid email address.');
+    return;
+  }
+  // Show confirmation (actual email sending requires a backend)
+  show('contact-sent');
+  $('contact-name').value  = '';
+  $('contact-email').value = '';
+  $('contact-msg').value   = '';
+}
+
+/* ═══════════════════════════════════════
    FAQ
 ═══════════════════════════════════════ */
 function sendContact() {
@@ -1510,5 +1533,198 @@ document.addEventListener('DOMContentLoaded', () => {
   console.log('[ShiftClockTime] Self-test: '+pass+'/'+tests.length+' passed'+(fail?' | '+fail+' FAILED':''));
 })();
 </script>
+
+<!-- ABOUT -->
+<div id="page-about" class="page">
+  <div class="wrap" style="max-width:680px">
+    <div class="page-head"><div class="ph-icon" style="font-size:18px;font-weight:900;color:#fff;font-family:Inter">SC</div><div><h1>About Shift Clock Time</h1><p>Why this site exists and what it does</p></div></div>
+    <div class="card">
+      <p style="font-size:15px;line-height:1.85;color:var(--text2);margin-bottom:18px">Shift Clock Time is a free tool built for people who work by the hour. Nurses, warehouse workers, drivers, security guards, factory workers, retail staff — anyone who clocks in and clocks out.</p>
+      <p style="font-size:15px;line-height:1.85;color:var(--text2);margin-bottom:18px">Most pay calculators are built for office jobs with set salaries. Shift workers have different needs. You want to know what time you get off. How many hours you worked. What you actually take home after taxes. Whether your overtime was calculated right.</p>
+      <p style="font-size:15px;line-height:1.85;color:var(--text2);margin-bottom:18px">This site answers those questions — fast, for free, with no account required. Every tool works in seconds. Nothing is saved to any server. Your information stays on your device.</p>
+      <div class="divider"></div>
+      <p style="font-size:13.5px;font-weight:700;color:var(--navy);margin-bottom:10px">What the tools do</p>
+      <div style="display:grid;gap:10px">
+        <div style="background:var(--bg2);border:1.5px solid var(--border-light);border-radius:8px;padding:12px 15px"><strong style="font-size:13px">My Hours</strong><br><span style="font-size:12.5px;color:var(--text2)">Live shift timer, live earnings counter, punch in/out tracker</span></div>
+        <div style="background:var(--bg2);border:1.5px solid var(--border-light);border-radius:8px;padding:12px 15px"><strong style="font-size:13px">My Shift</strong><br><span style="font-size:12.5px;color:var(--text2)">Clock out time calculator, hours worked between two times</span></div>
+        <div style="background:var(--bg2);border:1.5px solid var(--border-light);border-radius:8px;padding:12px 15px"><strong style="font-size:13px">My Pay</strong><br><span style="font-size:12.5px;color:var(--text2)">Take-home pay after taxes, overtime calculator, raise impact</span></div>
+        <div style="background:var(--bg2);border:1.5px solid var(--border-light);border-radius:8px;padding:12px 15px"><strong style="font-size:13px">Timesheet</strong><br><span style="font-size:12.5px;color:var(--text2)">Weekly time tracker you can copy or print</span></div>
+      </div>
+      <div class="divider"></div>
+      <p style="font-size:13px;color:var(--text2);line-height:1.75">This site is free to use and always will be. It is supported by ads. Results are estimates and should not replace your employer payroll system or a tax professional.</p>
+    </div>
+  </div>
+</div>
+
+<!-- CONTACT -->
+<div id="page-contact" class="page">
+  <div class="wrap" style="max-width:620px">
+    <div class="page-head"><div class="ph-icon" style="font-size:16px;font-weight:900;color:#fff;font-family:Inter">@</div><div><h1>Contact</h1><p>Questions, feedback, or something not working right</p></div></div>
+    <div class="card">
+      <p style="font-size:14.5px;color:var(--text2);line-height:1.8;margin-bottom:20px">If something on the site is broken, giving wrong results, or you have a suggestion — send a message. We read everything.</p>
+      <div class="field"><label>Your name</label><input type="text" id="contact-name" placeholder="Your name" onfocus="this.select()"/></div>
+      <div class="field"><label>Your email</label><input type="text" id="contact-email" placeholder="your@email.com" onfocus="this.select()"/></div>
+      <div class="field"><label>Message</label><textarea id="contact-msg" rows="5" placeholder="Tell us what is on your mind..." style="width:100%;padding:9px 11px;border:2px solid var(--border-light);border-radius:7px;font-family:Inter,sans-serif;font-size:14px;background:#fff;color:var(--text);outline:none;resize:vertical;transition:border-color .15s" onfocus="this.style.borderColor='var(--navy)'" onblur="this.style.borderColor='var(--border-light)'"></textarea></div>
+      <button class="btn btn-navy" onclick="submitContact()">Send Message</button>
+      <div id="contact-sent" class="info-box hidden" style="margin-top:10px">Message received. We will get back to you within 2 business days.</div>
+      <div class="divider"></div>
+      <p style="font-size:13px;color:var(--text2)">You can also email us directly at <strong>hello@shiftclocktime.com</strong></p>
+    </div>
+  </div>
+</div>
+
+<!-- PRIVACY POLICY -->
+<div id="page-privacy" class="page">
+  <div class="wrap" style="max-width:700px">
+    <div class="page-head"><div class="ph-icon" style="font-size:15px;font-weight:900;color:#fff;font-family:Inter">PP</div><div><h1>Privacy Policy</h1><p>Last updated: January 2025</p></div></div>
+    <div class="card">
+      <div style="display:flex;flex-direction:column;gap:22px">
+
+        <div>
+          <p style="font-size:13px;font-weight:800;text-transform:uppercase;letter-spacing:.06em;color:var(--slate);margin-bottom:8px">Who We Are</p>
+          <p style="font-size:14px;color:var(--text2);line-height:1.8">Shift Clock Time (shiftclocktime.com) is a free online calculator tool for shift workers. We do not collect your name, address, or payment information. We do not require any account to use this site.</p>
+        </div>
+
+        <div>
+          <p style="font-size:13px;font-weight:800;text-transform:uppercase;letter-spacing:.06em;color:var(--slate);margin-bottom:8px">What We Collect</p>
+          <p style="font-size:14px;color:var(--text2);line-height:1.8">We do not collect or store any personal data you enter into our calculators. All calculations happen on your device only. The only data we may collect is:</p>
+          <ul style="font-size:14px;color:var(--text2);line-height:1.9;margin-top:8px;padding-left:18px">
+            <li>Basic usage data such as page views and general location (country/city) via Google Analytics</li>
+            <li>Device type, browser type, and operating system — used only to improve the site</li>
+            <li>No names, no emails, no financial data</li>
+          </ul>
+        </div>
+
+        <div>
+          <p style="font-size:13px;font-weight:800;text-transform:uppercase;letter-spacing:.06em;color:var(--slate);margin-bottom:8px">Cookies</p>
+          <p style="font-size:14px;color:var(--text2);line-height:1.8">This site uses cookies. Cookies are small files stored on your device. We use them for:</p>
+          <ul style="font-size:14px;color:var(--text2);line-height:1.9;margin-top:8px;padding-left:18px">
+            <li><strong>Analytics</strong> — Google Analytics uses cookies to track site usage. This data is anonymous.</li>
+            <li><strong>Advertising</strong> — Google AdSense uses cookies to show you relevant ads based on your browsing habits.</li>
+            <li><strong>Preferences</strong> — We store your hourly rate and tracker state locally in your browser (localStorage) so the site remembers your settings. This data never leaves your device.</li>
+          </ul>
+          <p style="font-size:14px;color:var(--text2);line-height:1.8;margin-top:10px">You can disable cookies in your browser settings at any time. Some features may not work without cookies.</p>
+        </div>
+
+        <div>
+          <p style="font-size:13px;font-weight:800;text-transform:uppercase;letter-spacing:.06em;color:var(--slate);margin-bottom:8px">Google AdSense and Advertising</p>
+          <p style="font-size:14px;color:var(--text2);line-height:1.8">This site uses Google AdSense to display ads. Google may use cookies and similar technologies to serve ads based on your past visits to this site and other websites. You can opt out of personalized advertising by visiting <a href="https://www.google.com/settings/ads" target="_blank" style="color:var(--blue)">google.com/settings/ads</a>.</p>
+          <p style="font-size:14px;color:var(--text2);line-height:1.8;margin-top:8px">For more information on how Google uses data, visit <a href="https://policies.google.com/technologies/partner-sites" target="_blank" style="color:var(--blue)">Google Privacy and Terms</a>.</p>
+        </div>
+
+        <div>
+          <p style="font-size:13px;font-weight:800;text-transform:uppercase;letter-spacing:.06em;color:var(--slate);margin-bottom:8px">Google Analytics</p>
+          <p style="font-size:14px;color:var(--text2);line-height:1.8">We use Google Analytics to understand how visitors use the site. This includes data like which pages are most visited and how long people stay. All data is anonymous. Google Analytics does not identify individual users. To opt out, you can install the <a href="https://tools.google.com/dlpage/gaoptout" target="_blank" style="color:var(--blue)">Google Analytics Opt-out Browser Add-on</a>.</p>
+        </div>
+
+        <div>
+          <p style="font-size:13px;font-weight:800;text-transform:uppercase;letter-spacing:.06em;color:var(--slate);margin-bottom:8px">Third-Party Links</p>
+          <p style="font-size:14px;color:var(--text2);line-height:1.8">This site may contain links to other websites. We are not responsible for the privacy practices of those sites. We recommend you read their privacy policies.</p>
+        </div>
+
+        <div>
+          <p style="font-size:13px;font-weight:800;text-transform:uppercase;letter-spacing:.06em;color:var(--slate);margin-bottom:8px">Your Rights</p>
+          <p style="font-size:14px;color:var(--text2);line-height:1.8">You have the right to:</p>
+          <ul style="font-size:14px;color:var(--text2);line-height:1.9;margin-top:8px;padding-left:18px">
+            <li>Ask what data we hold about you</li>
+            <li>Ask us to delete any data we hold</li>
+            <li>Opt out of analytics and advertising cookies</li>
+            <li>Use the site without providing any personal information</li>
+          </ul>
+          <p style="font-size:14px;color:var(--text2);line-height:1.8;margin-top:10px">To make any of these requests, email us at <strong>hello@shiftclocktime.com</strong></p>
+        </div>
+
+        <div>
+          <p style="font-size:13px;font-weight:800;text-transform:uppercase;letter-spacing:.06em;color:var(--slate);margin-bottom:8px">Children</p>
+          <p style="font-size:14px;color:var(--text2);line-height:1.8">This site is not directed at children under 13. We do not knowingly collect data from children.</p>
+        </div>
+
+        <div>
+          <p style="font-size:13px;font-weight:800;text-transform:uppercase;letter-spacing:.06em;color:var(--slate);margin-bottom:8px">Changes to This Policy</p>
+          <p style="font-size:14px;color:var(--text2);line-height:1.8">We may update this policy from time to time. The date at the top of this page will always show when it was last changed. Continued use of the site means you accept the updated policy.</p>
+        </div>
+
+        <div>
+          <p style="font-size:13px;font-weight:800;text-transform:uppercase;letter-spacing:.06em;color:var(--slate);margin-bottom:8px">Contact</p>
+          <p style="font-size:14px;color:var(--text2);line-height:1.8">For any privacy questions: <strong>hello@shiftclocktime.com</strong></p>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- TERMS OF SERVICE -->
+<div id="page-terms" class="page">
+  <div class="wrap" style="max-width:700px">
+    <div class="page-head"><div class="ph-icon" style="font-size:15px;font-weight:900;color:#fff;font-family:Inter">TS</div><div><h1>Terms of Service</h1><p>Last updated: January 2025</p></div></div>
+    <div class="card">
+      <div style="display:flex;flex-direction:column;gap:22px">
+
+        <div>
+          <p style="font-size:14px;color:var(--text2);line-height:1.8">By using Shift Clock Time (shiftclocktime.com), you agree to these terms. If you do not agree, please do not use the site.</p>
+        </div>
+
+        <div>
+          <p style="font-size:13px;font-weight:800;text-transform:uppercase;letter-spacing:.06em;color:var(--slate);margin-bottom:8px">What This Site Is</p>
+          <p style="font-size:14px;color:var(--text2);line-height:1.8">Shift Clock Time provides free online calculators for shift workers. The tools are for informational and estimation purposes only. They are not a substitute for official payroll systems, employer records, or professional tax advice.</p>
+        </div>
+
+        <div>
+          <p style="font-size:13px;font-weight:800;text-transform:uppercase;letter-spacing:.06em;color:var(--slate);margin-bottom:8px">Acceptable Use</p>
+          <p style="font-size:14px;color:var(--text2);line-height:1.8">You may use this site for personal, non-commercial purposes. You must not:</p>
+          <ul style="font-size:14px;color:var(--text2);line-height:1.9;margin-top:8px;padding-left:18px">
+            <li>Use the site for any illegal purpose</li>
+            <li>Copy or reproduce the site's content, design, or code without permission</li>
+            <li>Attempt to hack, overload, or damage the site</li>
+            <li>Use automated tools to scrape or extract data from the site</li>
+          </ul>
+        </div>
+
+        <div>
+          <p style="font-size:13px;font-weight:800;text-transform:uppercase;letter-spacing:.06em;color:var(--slate);margin-bottom:8px">Accuracy of Results</p>
+          <p style="font-size:14px;color:var(--text2);line-height:1.8">All results from our calculators are estimates. Actual pay, taxes, and hours may differ depending on your employer, your location, and current tax laws. Always verify important numbers with your employer or a qualified professional. We are not responsible for any errors in results or decisions you make based on them.</p>
+        </div>
+
+        <div>
+          <p style="font-size:13px;font-weight:800;text-transform:uppercase;letter-spacing:.06em;color:var(--slate);margin-bottom:8px">No Warranty</p>
+          <p style="font-size:14px;color:var(--text2);line-height:1.8">This site is provided as-is. We make no promise that it will always be available, error-free, or accurate. We may update, change, or shut down any part of the site at any time without notice.</p>
+        </div>
+
+        <div>
+          <p style="font-size:13px;font-weight:800;text-transform:uppercase;letter-spacing:.06em;color:var(--slate);margin-bottom:8px">Limitation of Liability</p>
+          <p style="font-size:14px;color:var(--text2);line-height:1.8">To the fullest extent allowed by law, Shift Clock Time is not liable for any loss, damage, or harm that results from your use of this site. This includes errors in calculations, missed pay, or any decisions made based on results from this site.</p>
+        </div>
+
+        <div>
+          <p style="font-size:13px;font-weight:800;text-transform:uppercase;letter-spacing:.06em;color:var(--slate);margin-bottom:8px">Intellectual Property</p>
+          <p style="font-size:14px;color:var(--text2);line-height:1.8">All content on this site — including the design, layout, code, and text — belongs to Shift Clock Time. You may not copy, reuse, or redistribute any part of it without written permission.</p>
+        </div>
+
+        <div>
+          <p style="font-size:13px;font-weight:800;text-transform:uppercase;letter-spacing:.06em;color:var(--slate);margin-bottom:8px">Third-Party Services</p>
+          <p style="font-size:14px;color:var(--text2);line-height:1.8">This site uses Google AdSense for advertising and Google Analytics for usage data. These are third-party services with their own terms and privacy policies. We are not responsible for how these services handle data.</p>
+        </div>
+
+        <div>
+          <p style="font-size:13px;font-weight:800;text-transform:uppercase;letter-spacing:.06em;color:var(--slate);margin-bottom:8px">Changes to These Terms</p>
+          <p style="font-size:14px;color:var(--text2);line-height:1.8">We may update these terms at any time. The date at the top of this page shows when they were last changed. Continued use of the site after changes means you accept the new terms.</p>
+        </div>
+
+        <div>
+          <p style="font-size:13px;font-weight:800;text-transform:uppercase;letter-spacing:.06em;color:var(--slate);margin-bottom:8px">Governing Law</p>
+          <p style="font-size:14px;color:var(--text2);line-height:1.8">These terms are governed by the laws of the United States. Any disputes will be resolved in U.S. courts.</p>
+        </div>
+
+        <div>
+          <p style="font-size:13px;font-weight:800;text-transform:uppercase;letter-spacing:.06em;color:var(--slate);margin-bottom:8px">Contact</p>
+          <p style="font-size:14px;color:var(--text2);line-height:1.8">Questions about these terms: <strong>hello@shiftclocktime.com</strong></p>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
 </body>
 </html>
